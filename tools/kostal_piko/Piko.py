@@ -1,11 +1,12 @@
 #!/usr/bin/python
 
 # Name     : Piko Inverter communication software
-# Rel      : 1.3.3
+# Rel      : 1.4.1
 # Author   : Romuald Dufour
 # Contrib. : emoncms export code by Peter Hasse (peter.hasse@fokus.fraunhofer.de)
 # Licence  : GPL v3
-# History  : 1.3.3 - 20140117 - Exception handling on emoncms
+# History  : 1.4.1 - 20160218 - Add MySQL support
+#          : 1.3.3 - 20140117 - Exception handling on emoncms
 #                    20140110 - Added support for emoncms export (http://emoncms.org)
 #                               json and requests modules depencies added
 #                               ('easy_install requests' maybe needed)
@@ -27,24 +28,29 @@
 #
 # TODO     : ...
 
+
+
+
+
 import sys
 import socket
 import urllib2
 import csv
 import sqlite3
-import requests
-import json
+import MySQLdb as mdb
+#import requests
+#import json
 from optparse import OptionParser, OptionGroup
 from datetime import datetime, timedelta
 
 
-RelVer="1.3.3"
-RelDate="20140117"
+RelVer="1.4.1"
+RelDate="20160218"
 TRef="c800"
+P="?"
 
-if sys.version_info < (2, 6) or sys.version_info > (2, 9):
-  raise "You must use Python 2.6.x or 2.7.x - Support for 3.x is not yet ready"
-
+#if sys.version_info < (2, 6) or sys.version_info > (2, 9):
+#  raise "You must use Python 2.6.x or 2.7.x - Support for 3.x is not yet ready"
 
 # General Functions
 def PrintHexa(Txt, St):
@@ -163,9 +169,15 @@ def GetHistTime(t, tref, now):
   return ht.isoformat()
 
 def DBConnect(DBName):
-  cnx = sqlite3.connect(DBName)
-  cnx.isolation_level = None
-  cnx.row_factory = sqlite3.Row
+  global P
+  if len(opt.DBSrv) > 0:
+    cnx = mdb.Connect(host=opt.DBSrv, user=opt.DBUsr, passwd=opt.DBPwd, db=DBName)
+    P = '%s'
+  else:
+    cnx = sqlite3.connect(DBName)
+    cnx.isolation_level = None
+    cnx.row_factory = sqlite3.Row
+    P = '?'
   return cnx
 
 def PushToEmon():
@@ -208,7 +220,13 @@ parser = OptionParser(usage="usage: %prog --host IP [options]", version="%prog v
 parser.add_option("-v", "--verbose", help="Verbose mode, print headers", dest="Headers", action="store_true", default=False)
 parser.add_option("-q", "--quiet", help="Quiet mode, print only values", dest="Verbose", action="store_false", default=True)
 parser.add_option("", "--timestamp", help="Output timestamp", dest="Timestamp", action="store_true", default=False)
-parser.add_option("", "--db", help="Connect to database file", dest="DBName", metavar="FILENAME", default="")
+parser.add_option("", "--db", help="database name", dest="DBName", metavar="DB NAME", default="")
+SQLGroup=OptionGroup(parser, "SQL connection management", "Management functions to connect to an SQL Server")
+SQLGroup.add_option("", "--my", help="Connect to a MySQL server", dest="DBSql", action="store_true", default=False)
+SQLGroup.add_option("", "--my-srv", help="Mysql server IP or hostname", dest="DBSrv", metavar="SERVER", default="")
+SQLGroup.add_option("", "--my-usr", help="Mysql username", dest="DBUsr", metavar="USERNAME", default="")
+SQLGroup.add_option("", "--my-pwd", help="Mysql password", dest="DBPwd", metavar="PASSWORD", default="")
+parser.add_option_group(SQLGroup)
 HostGroup=OptionGroup(parser, "Inverter online communication options", "Define the inverter IP (or DNS name) and the port to connect to")
 HostGroup.add_option("", "--host", help="IP address or DNS name", dest="InvHost", metavar="HOSTNAME", default="127.0.0.1")
 HostGroup.add_option("", "--port", help="TCP online port", type=int, dest="InvPort", metavar="81", default="81")
@@ -246,6 +264,12 @@ Verbose=opt.Verbose
 if opt.ShowALL:
   opt.ShowStatus = opt.ShowTotalIndex = opt.ShowDailyIndex = opt.ShowPower = opt.ShowName = opt.ShowSN = opt.ShowTech = opt.ShowModel = opt.ShowTimers = True
 
+if opt.DBSql:
+  if len(opt.DBSrv)==0: opt.DBSrv='localhost'
+  if len(opt.DBName)==0: opt.DBName='piko'
+  if len(opt.DBUsr)==0: opt.DBUsr=opt.DBName
+  if len(opt.DBPwd)==0: opt.DBPwd=opt.DBName
+
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 host = opt.InvHost
@@ -277,9 +301,9 @@ if opt.Timestamp and not opt.ShowCSV :
 if len(opt.DBName) > 0:
   UseDB = True
   try:
-    DB=DBConnect(opt.DBName)
+    DB = DBConnect(opt.DBName)
   except:
-    UseDB=false
+    UseDB = False
     if Verbose: print "DB Connection Error"
 else:
   UseDB = False
@@ -471,16 +495,16 @@ if UseDB and Status >= 1 and opt.ShowTech:
 		   AC1_U, AC1_I, AC1_P, AC1_T, AC2_U, AC2_I, AC2_P, AC2_T, \
 		   AC3_U, AC3_I, AC3_P, AC3_T, DC_P, AC_P, EFF, \
 		   AC_S, Inv_Status, Inv_TodayWh, Inv_TotalWh)\
-		   values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,\
-		           ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,\
-		           ?, ?, ?, ?, ?)",\
+		   values ("+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+",\
+		           "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+",\
+			   "+P+", "+P+", "+P+", "+P+", "+P+")",\
 		   (T_ISO,\
-		    CC1_U, CC1_I, CC1_P, CC1_T, CC1_S,\
-		    CC2_U, CC2_I, CC2_P, CC2_T, CC2_S,\
-		    CC3_U, CC3_I, CC3_P, CC3_T, CC3_S,\
-		    CA1_U, CA1_I, CA1_P, CA1_T,\
-		    CA2_U, CA2_I, CA2_P, CA2_T,\
-		    CA3_U, CA3_I, CA3_P, CA3_T,\
+		    "%.1f"%CC1_U, "%.2f"%CC1_I, CC1_P, CC1_T, CC1_S,\
+		    "%.1f"%CC2_U, "%.2f"%CC2_I, CC2_P, CC2_T, CC2_S,\
+		    "%.1f"%CC3_U, "%.2f"%CC3_I, CC3_P, CC3_T, CC3_S,\
+		    "%.1f"%CA1_U, "%.2f"%CA1_I, CA1_P, CA1_T,\
+		    "%.1f"%CA2_U, "%.2f"%CA2_I, CA2_P, CA2_T,\
+		    "%.1f"%CA3_U, "%.2f"%CA3_I, CA3_P, CA3_T,\
 		    CC_P, CA_P, EFF, \
 		    CA_S, Status, TodayWh, TotalWh))
   except:
@@ -571,9 +595,9 @@ if opt.ShowHistory:
 			    AC1_U, AC1_I, AC1_P, AC1_T, AC2_U, AC2_I, AC2_P, AC2_T, \
 			    AC3_U, AC3_I, AC3_P, AC3_T, DC_P, AC_P, EFF, F, FCI, AIN1, AIN2, AIN3, AIN4, \
 			    AC_S, ERR, ENV_S, ENV_ERR, KB_S, E, R, MSG)\
-			    values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,\
-			            ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,\
-			            ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",\
+			    values ("+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+",\
+			            "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+",\
+			            "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+", "+P+")",\
 			    (T, T_ISO,\
 			     DC1_U, DC1_I, DC1_P, DC1_T, DC1_S,\
 			     DC2_U, DC2_I, DC2_P, DC2_T, DC2_S,\
@@ -587,7 +611,9 @@ if opt.ShowHistory:
 	  except:
 	    pass
 
-  if UseDB: DB.close()													    
+if UseDB:
+  DB.commit()
+  DB.close()													    
 
 # Results Prints
 if (Status != -1):
