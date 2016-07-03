@@ -1,0 +1,1 @@
+This folder is only needed to make en-GB fall-back to the default English

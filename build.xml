@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<project name="WSL" default="deploy" basedir=".">
+
+	<!-- Give user a chance to override without editing this file or typing -D -->
+	<property file="${basedir}/build.properties" />
+	<property name="src.dir" value="." />
+	<property name="html.dir" value="html" />
+	<property name="doc.dir" value="doc/html" />
+
+
+	<target name="deploy" description="Copy files to the destination dir" depends="clean, quickdeploy">
+	</target>
+	
+	<target name="quickdeploy" description="Copy files to the destination dir">
+		<echo message="Deploy dir: ${deploy.dir}" />
+		<echo message="Source dir: ${src.dir}" />
+		<copy todir="${deploy.dir}">
+			<fileset dir="${src.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+		<!-- copy todir="${deploy.dir}">
+			<fileset dir="${html.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy -->
+		<!-- copy todir="${deploy.doc.dir}">
+			<fileset dir="${doc.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy -->
+		<mkdir dir="${deploy.dir}/log"/>
+		<chmod dir="${deploy.dir}/log" perm="777" />
+
+	</target>
+	
+	<target name="clean" description="Clean the deploy dir">
+		 <delete includeemptydirs="true">
+		    <fileset dir="${deploy.dir}" includes="**/*" excludes="${deploy.dir}" />
+		  </delete>
+	</target>
+</project>

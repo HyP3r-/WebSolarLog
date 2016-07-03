@@ -1,0 +1,420 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Websolarlog\n"
+"POT-Creation-Date: 2013-07-23 21:03+0100\n"
+"PO-Revision-Date: 2013-07-24 20:08+0100\n"
+"Last-Translator: \n"
+"Language-Team: TBusch <timo.busch@gmail.com>\n"
+"Language: Deutsch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:\\Projekte\\websolarlog-1.0.0-full\\websolarlog\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: server.php:42 server.php:303 server.php:345 server.php:382 server.php:432
+#: server.php:498
+msgid "Today"
+msgstr "Heute"
+
+#: server.php:43
+msgid "Yesterday"
+msgstr "Gestern"
+
+#: server.php:44 server.php:50 server.php:227 server.php:355 server.php:356
+#: server.php:500 template/green/index.php:43
+msgid "Month"
+msgstr "Monat"
+
+#: server.php:45 server.php:51 server.php:228 server.php:313 server.php:501
+#: template/green/index.php:44
+msgid "Year"
+msgstr "Jahr"
+
+#: server.php:48 server.php:225 server.php:230 template/green/index.php:42
+msgid "Day"
+msgstr "Tag"
+
+#: server.php:49 server.php:226 server.php:499
+msgid "Week"
+msgstr "Woche"
+
+#: server.php:55 server.php:240 server.php:305 server.php:347 server.php:384
+#: server.php:434
+msgid "date"
+msgstr "Datum"
+
+#: server.php:56 server.php:242
+msgid "periode"
+msgstr "Zeitraum"
+
+#: server.php:57 server.php:243
+msgid "previous"
+msgstr "vorheriger"
+
+#: server.php:58 server.php:244
+msgid "next"
+msgstr "nächster"
+
+#: server.php:126 server.php:505
+msgid "Time"
+msgstr "Zeit"
+
+#: server.php:127 server.php:308 server.php:350 server.php:386 server.php:436
+msgid "Inv"
+msgstr "Wechselrichter"
+
+#: server.php:128 server.php:506
+msgid "Inverter"
+msgstr "Wechselrichter"
+
+#: server.php:129
+msgid "Event"
+msgstr "Ereignis"
+
+#: server.php:130
+msgid "Miscellaneous"
+msgstr "Sonstiges"
+
+#: server.php:131
+msgid "Notice"
+msgstr "Notiz"
+
+#: server.php:132
+msgid "Alarm"
+msgstr "Alarm"
+
+#: server.php:133
+msgid "Info"
+msgstr "Info"
+
+#: server.php:134
+msgid "Information"
+msgstr "Information"
+
+#: server.php:135 server.php:144
+msgid "power"
+msgstr "Leistung"
+
+#: server.php:136
+msgid "system"
+msgstr "System"
+
+#: server.php:137 server.php:279 server.php:399 server.php:443 server.php:445
+msgid "expected"
+msgstr "erwarted"
+
+#: server.php:138
+msgid "amount"
+msgstr "Menge"
+
+#: server.php:139
+msgid "Wp"
+msgstr "Wp"
+
+#: server.php:140
+msgid "kWh"
+msgstr "kWh"
+
+#: server.php:141
+msgid "installed power"
+msgstr "installierte Leistung"
+
+#: server.php:142
+msgid "orientation"
+msgstr "Ausrichtung"
+
+#: server.php:143
+msgid "pitch"
+msgstr "Dachneigung"
+
+#: server.php:145
+msgid "mpp"
+msgstr "mpp"
+
+#: server.php:146
+msgid "description"
+msgstr "Beschreibung"
+
+#: server.php:147
+msgid "location"
+msgstr "Ort"
+
+#: server.php:148
+msgid "logger"
+msgstr "Logger"
+
+#: server.php:149
+msgid "uptime"
+msgstr "Laufzeit"
+
+#: server.php:150
+msgid "days"
+msgstr "Tage"
+
+#: server.php:151
+msgid "hours"
+msgstr "Stunden"
+
+#: server.php:152
+msgid "mins"
+msgstr "Minimum"
+
+#: server.php:175 server.php:190
+msgid "Energy (Wh)"
+msgstr "kum. Leistung (Wh)"
+
+#: server.php:176 server.php:191
+msgid "avg. Power (W)"
+msgstr "durchschn. Leistung (W)"
+
+#: server.php:177 server.php:192
+msgid "harvested (W)"
+msgstr "Ertrag (W)"
+
+#: server.php:178 server.php:193
+msgid "cumulative (W)"
+msgstr "kummuliert (W)"
+
+#: server.php:179 server.php:194
+msgid "total Energy"
+msgstr "Gesamtenergie"
+
+#: server.php:209 server.php:256
+msgid "Show or hide graph groups:"
+msgstr "Zeige oder verberge Graph Gruppen"
+
+#: server.php:210 server.php:257 server.php:507
+#: classes/PDODataAdapter.php:1246 classes/PDODataAdapter.php:1251
+#: classes/PDODataAdapter.php:1256
+msgid "Power"
+msgstr "Leistung"
+
+#: server.php:211 server.php:258 classes/PDODataAdapter.php:1247
+#: classes/PDODataAdapter.php:1252 classes/PDODataAdapter.php:1257
+msgid "Voltage"
+msgstr "Spannung"
+
+#: server.php:212 server.php:259 classes/PDODataAdapter.php:1248
+#: classes/PDODataAdapter.php:1253 classes/PDODataAdapter.php:1258
+msgid "Amps"
+msgstr "Ampere"
+
+#: server.php:213 server.php:260 classes/PDODataAdapter.php:1249
+msgid "Frequency"
+msgstr "Frequenz"
+
+#: server.php:214 server.php:261 classes/PDODataAdapter.php:1254
+#: classes/PDODataAdapter.php:1259
+msgid "Ratio"
+msgstr "Verhältnis"
+
+#: server.php:215 server.php:262 classes/PDODataAdapter.php:1262
+#: classes/PDODataAdapter.php:1263
+msgid "Temperature"
+msgstr "Temperatur"
+
+#: server.php:216 server.php:263 server.php:482
+#: classes/PDODataAdapter.php:1261
+msgid "Efficiency"
+msgstr "Effizienz"
+
+#: server.php:241
+msgid "inv"
+msgstr "Wechselrichter"
+
+#: server.php:278 server.php:442
+msgid "month"
+msgstr "Monat"
+
+#: server.php:280 server.php:444 server.php:446
+msgid "harvested"
+msgstr "erzeugt"
+
+#: server.php:281 server.php:447 server.php:448
+msgid "difference"
+msgstr "Differenz"
+
+#: server.php:282 server.php:444 server.php:445 server.php:448
+msgid "cum."
+msgstr "kum."
+
+#: server.php:304 server.php:346 server.php:383 server.php:433
+msgid "Max Grid Power"
+msgstr "Maximale Leistung netzseitig"
+
+#: server.php:306 server.php:348
+msgid "Select period"
+msgstr "Wähle Zeitraum"
+
+#: server.php:307 server.php:349 server.php:385 server.php:435
+msgid "TotalKWh"
+msgstr "GesamtKWh"
+
+#: server.php:309 server.php:351 server.php:387 server.php:437
+msgid "kwh"
+msgstr "kWh"
+
+#: server.php:310 server.php:352 server.php:388 server.php:438
+msgid "History values"
+msgstr "Historische Werte"
+
+#: server.php:311 server.php:353 server.php:389 server.php:439
+msgid "loading"
+msgstr "lädt"
+
+#: server.php:312 server.php:354 server.php:390 server.php:440
+msgid "watt"
+msgstr "Watt"
+
+#: server.php:314
+msgid "The values below are grouped by Month of the selected Year"
+msgstr "Die Werte unterhalb sind gruppiert nach Monat des ausgewählten Jahres"
+
+#: server.php:357
+msgid "The values below are grouped by Day of the selected Month"
+msgstr "Die Werte unterhalb sind gruppiert nach Tag des ausgewählten Monats"
+
+#: server.php:396
+msgid "inverter"
+msgstr "Wechselrichter"
+
+#: server.php:397
+msgid "compare"
+msgstr "vergleichen"
+
+#: server.php:398
+msgid "to"
+msgstr "zu"
+
+#: server.php:480
+msgid "DC Power"
+msgstr "Gleichstrom Leistung"
+
+#: server.php:481
+msgid "AC Power"
+msgstr "Wechselstrom Leistung"
+
+#: server.php:491
+msgid "Some Figures*"
+msgstr "Übersicht"
+
+#: server.php:492
+msgid "By"
+msgstr "von"
+
+#: server.php:493
+msgid "status"
+msgstr "Status"
+
+#: server.php:494
+msgid "IT"
+msgstr "Temperatur"
+
+#: server.php:495
+msgid "Total"
+msgstr "Gesamt"
+
+#: server.php:497
+msgid "Avg. Day"
+msgstr "pro Tag"
+
+#: server.php:502
+msgid "overall"
+msgstr "Gesamt"
+
+#: server.php:503
+msgid "Inv."
+msgstr "Wechselrichter"
+
+#: server.php:504
+msgid "grid"
+msgstr "Stromnetz"
+
+#: server.php:508
+msgid "W"
+msgstr "W"
+
+#: server.php:509
+msgid "ratio"
+msgstr "Verhältnis"
+
+#: server.php:510
+msgid "overall**"
+msgstr "Gesamt**"
+
+#: server.php:511
+msgid "kWh/kWp"
+msgstr "kWh/kWp"
+
+#: server.php:513
+msgid "* All figures are in kWh"
+msgstr "* Alle Werte sind in kWh"
+
+#: server.php:514
+msgid "** Incl. initial kWh"
+msgstr "** Initiale kWh eingeschlossen"
+
+#: admin/admin-server.php:196 admin/admin-server.php:203
+#: admin/admin-server.php:212
+msgid "Validation"
+msgstr "Überprüfung"
+
+#: admin/admin-server.php:197
+msgid "Old password is invalid:"
+msgstr "altes Passwort ist ungültig:"
+
+#: admin/admin-server.php:204
+msgid "New password should be at least 6 characters"
+msgstr "Neues Passwort muss mindestens 6 Buchstaben lang sein"
+
+#: admin/admin-server.php:213
+msgid "New passwords are not the same"
+msgstr "Das neue Passwort stimmt nicht überein"
+
+#: admin/admin-server.php:220
+msgid "Success"
+msgstr "Erfolgreich"
+
+#: admin/admin-server.php:221
+msgid "Password successfully changed"
+msgstr "Passwort wurde erfolgreich geändert"
+
+#: classes/PDODataAdapter.php:1246 classes/PDODataAdapter.php:1247
+#: classes/PDODataAdapter.php:1248 classes/PDODataAdapter.php:1249
+msgid "Grid"
+msgstr "Stromnetz"
+
+#: classes/PDODataAdapter.php:1904
+msgid "sleeping"
+msgstr "schläft"
+
+#: classes/PDODataAdapter.php:1938
+msgid "awake"
+msgstr "wach"
+
+#: template/green/index.php:41
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: template/green/index.php:45
+msgid "Details"
+msgstr "Details"
+
+#: template/green/index.php:46
+msgid "Compare"
+msgstr "Vergleich"
+
+#: template/green/index.php:47
+msgid "Production"
+msgstr "Produktion"
+
+#: template/green/index.php:48
+msgid "Other"
+msgstr "Andere"
+
+#: template/green/index.php:86
+msgid "version"
+msgstr "Version"

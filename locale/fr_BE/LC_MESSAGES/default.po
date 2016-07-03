@@ -1,0 +1,689 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WSL-Dutch\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-04 09:59+0100\n"
+"PO-Revision-Date: 2013-07-04 09:59+0100\n"
+"Last-Translator: a <a@a.nl>\n"
+"Language-Team: \n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: /home/marco/www/WebSolarLog/trunk/\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: server.php:35 server.php:339 server.php:379 server.php:417 server.php:466
+#: server.php:513 server.php:563 tmp/export/server.php:35
+#: tmp/export/server.php:334 tmp/export/server.php:374
+#: tmp/export/server.php:412 tmp/export/server.php:461
+#: tmp/export/server.php:508 tmp/export/server.php:558
+msgid "Today"
+msgstr "Aujourd'hui"
+
+#: server.php:36 tmp/export/server.php:36
+msgid "Yesterday"
+msgstr "Hier"
+
+#: server.php:37 server.php:43 server.php:269 server.php:389 server.php:390
+#: server.php:515 server.php:565 tmp/export/server.php:37
+#: tmp/export/server.php:43 tmp/export/server.php:264
+#: tmp/export/server.php:384 tmp/export/server.php:385
+#: tmp/export/server.php:510 tmp/export/server.php:560
+#: tmp/export/template/green/index.php:45 template/green/index.php:45
+msgid "Month"
+msgstr "Mois"
+
+#: server.php:38 server.php:44 server.php:270 server.php:349 server.php:516
+#: server.php:566 tmp/export/server.php:38 tmp/export/server.php:44
+#: tmp/export/server.php:265 tmp/export/server.php:344
+#: tmp/export/server.php:511 tmp/export/server.php:561
+#: tmp/export/template/green/index.php:46 template/green/index.php:46
+msgid "Year"
+msgstr "Année"
+
+#: server.php:41 server.php:267 server.php:272 tmp/export/server.php:41
+#: tmp/export/server.php:262 tmp/export/server.php:267
+#: tmp/export/template/green/index.php:44 template/green/index.php:44
+msgid "Day"
+msgstr "Jour"
+
+#: server.php:42 server.php:268 server.php:514 server.php:564
+#: tmp/export/server.php:42 tmp/export/server.php:263
+#: tmp/export/server.php:509 tmp/export/server.php:559
+msgid "Week"
+msgstr "Semaine"
+
+#: server.php:48 server.php:281 server.php:341 server.php:381 server.php:419
+#: server.php:468 tmp/export/server.php:48 tmp/export/server.php:276
+#: tmp/export/server.php:336 tmp/export/server.php:376
+#: tmp/export/server.php:414 tmp/export/server.php:463
+msgid "date"
+msgstr "date"
+
+#: server.php:49 server.php:283 tmp/export/server.php:49
+#: tmp/export/server.php:278
+msgid "periode"
+msgstr "période"
+
+#: server.php:50 server.php:284 tmp/export/server.php:50
+#: tmp/export/server.php:279
+msgid "previous"
+msgstr "précédent"
+
+#: server.php:51 server.php:285 tmp/export/server.php:51
+#: tmp/export/server.php:280
+msgid "next"
+msgstr "suivant"
+
+#: server.php:146 server.php:520 tmp/export/server.php:146
+#: tmp/export/server.php:515
+msgid "Time"
+msgstr "Temps"
+
+#: server.php:147 server.php:344 server.php:384 server.php:422 server.php:470
+#: tmp/export/server.php:147 tmp/export/server.php:339
+#: tmp/export/server.php:379 tmp/export/server.php:417
+#: tmp/export/server.php:465
+msgid "Inv"
+msgstr "Ond."
+
+#: server.php:148 server.php:521 tmp/export/server.php:148
+#: tmp/export/server.php:516
+msgid "Inverter"
+msgstr "Onduleur"
+
+#: server.php:149 tmp/export/server.php:149
+msgid "Event"
+msgstr "Evénement"
+
+#: server.php:150 tmp/export/server.php:150
+msgid "Miscellaneous"
+msgstr "Divers"
+
+#: server.php:151 tmp/export/server.php:151
+msgid "Notice"
+msgstr "Notice"
+
+#: server.php:152 tmp/export/server.php:152
+msgid "Alarm"
+msgstr "Alarme"
+
+#: server.php:153 tmp/export/server.php:153
+msgid "Info"
+msgstr "Info"
+
+#: server.php:154 tmp/export/server.php:154
+msgid "Information"
+msgstr "Information"
+
+#: server.php:155 server.php:164 tmp/export/server.php:155
+#: tmp/export/server.php:164
+msgid "power"
+msgstr "puissance"
+
+#: server.php:156 tmp/export/server.php:156
+msgid "system"
+msgstr "système"
+
+#: server.php:157 server.php:316 server.php:435 server.php:476 server.php:478
+#: tmp/export/server.php:157 tmp/export/server.php:311
+#: tmp/export/server.php:430 tmp/export/server.php:471
+#: tmp/export/server.php:473
+msgid "expected"
+msgstr "Attendu"
+
+#: server.php:158 tmp/export/server.php:158
+msgid "amount"
+msgstr "montant"
+
+#: server.php:159 tmp/export/server.php:159
+msgid "Wp"
+msgstr "Wc"
+
+#: server.php:160 tmp/export/server.php:160
+msgid "kWh"
+msgstr "kWh"
+
+#: server.php:161 tmp/export/server.php:161
+msgid "installed power"
+msgstr "puissance installée"
+
+#: server.php:162 tmp/export/server.php:162
+msgid "orientation"
+msgstr "orientation"
+
+#: server.php:163 tmp/export/server.php:163
+msgid "pitch"
+msgstr "terrain"
+
+#: server.php:165 tmp/export/server.php:165
+msgid "mpp"
+msgstr "mpp"
+
+#: server.php:166 tmp/export/server.php:166
+#: tmp/export/admin/admin-server.php:75 admin/admin-server.php:76
+msgid "description"
+msgstr "description"
+
+#: server.php:167 tmp/export/server.php:167
+msgid "location"
+msgstr "emplacement"
+
+#: server.php:168 tmp/export/server.php:168
+msgid "logger"
+msgstr "Logger :"
+
+#: server.php:169 tmp/export/server.php:169
+msgid "uptime"
+msgstr "durée de fonctionnement"
+
+#: server.php:170 tmp/export/server.php:170
+msgid "days"
+msgstr "jours"
+
+#: server.php:171 tmp/export/server.php:171
+msgid "hours"
+msgstr "heures"
+
+#: server.php:172 tmp/export/server.php:172
+msgid "mins"
+msgstr "min."
+
+#: server.php:215 server.php:231 tmp/export/server.php:210
+#: tmp/export/server.php:226
+msgid "Energy (Wh)"
+msgstr "Puissance cumulée (Wh)"
+
+#: server.php:216 server.php:232 tmp/export/server.php:211
+#: tmp/export/server.php:227
+msgid "avg. Power (W)"
+msgstr "Puissance moyenne (W)"
+
+#: server.php:217 server.php:233 tmp/export/server.php:212
+#: tmp/export/server.php:228
+msgid "harvested (W)"
+msgstr "Produit (W)"
+
+#: server.php:218 server.php:234 tmp/export/server.php:213
+#: tmp/export/server.php:229
+msgid "cumulative (W)"
+msgstr "Cumulé (W)"
+
+#: server.php:219 server.php:235 tmp/export/server.php:214
+#: tmp/export/server.php:230 tmp/export/admin/admin-server.php:72
+#: admin/admin-server.php:73
+msgid "generated"
+msgstr "générée"
+
+#: server.php:220 server.php:236 tmp/export/server.php:215
+#: tmp/export/server.php:231
+msgid "max"
+msgstr ""
+
+#: server.php:251 server.php:294 tmp/export/server.php:246
+#: tmp/export/server.php:289
+msgid "Show or hide graph groups:"
+msgstr "Cacher/Afficher les groupes de graphiques :"
+
+#: server.php:252 server.php:295 server.php:522 tmp/export/server.php:247
+#: tmp/export/server.php:290 tmp/export/server.php:517
+#: tmp/export/classes/PDODataAdapter.php:772
+#: tmp/export/classes/PDODataAdapter.php:777
+#: tmp/export/classes/PDODataAdapter.php:782 classes/PDODataAdapter.php:774
+#: classes/PDODataAdapter.php:779 classes/PDODataAdapter.php:784
+msgid "Power"
+msgstr "Puissance"
+
+#: server.php:253 server.php:296 tmp/export/server.php:248
+#: tmp/export/server.php:291 tmp/export/classes/PDODataAdapter.php:773
+#: tmp/export/classes/PDODataAdapter.php:778
+#: tmp/export/classes/PDODataAdapter.php:783 classes/PDODataAdapter.php:775
+#: classes/PDODataAdapter.php:780 classes/PDODataAdapter.php:785
+msgid "Voltage"
+msgstr "Tension"
+
+#: server.php:254 server.php:297 tmp/export/server.php:249
+#: tmp/export/server.php:292 tmp/export/classes/PDODataAdapter.php:774
+#: tmp/export/classes/PDODataAdapter.php:779
+#: tmp/export/classes/PDODataAdapter.php:784 classes/PDODataAdapter.php:776
+#: classes/PDODataAdapter.php:781 classes/PDODataAdapter.php:786
+msgid "Amps"
+msgstr "Ampères"
+
+#: server.php:255 server.php:298 tmp/export/server.php:250
+#: tmp/export/server.php:293 tmp/export/classes/PDODataAdapter.php:775
+#: classes/PDODataAdapter.php:777
+msgid "Frequency"
+msgstr "Fréquence"
+
+#: server.php:256 server.php:299 tmp/export/server.php:251
+#: tmp/export/server.php:294 tmp/export/classes/PDODataAdapter.php:780
+#: tmp/export/classes/PDODataAdapter.php:785 classes/PDODataAdapter.php:782
+#: classes/PDODataAdapter.php:787
+msgid "Ratio"
+msgstr "Rapport"
+
+#: server.php:257 server.php:300 tmp/export/server.php:252
+#: tmp/export/server.php:295 tmp/export/classes/PDODataAdapter.php:788
+#: tmp/export/classes/PDODataAdapter.php:789 classes/PDODataAdapter.php:790
+#: classes/PDODataAdapter.php:791
+msgid "Temperature"
+msgstr "Température"
+
+#: server.php:258 server.php:301 server.php:541 tmp/export/server.php:253
+#: tmp/export/server.php:296 tmp/export/server.php:536
+#: tmp/export/classes/PDODataAdapter.php:787 classes/PDODataAdapter.php:789
+msgid "Efficiency"
+msgstr "Efficacité"
+
+#: server.php:282 tmp/export/server.php:277
+msgid "inv"
+msgstr "Ond."
+
+#: server.php:315 server.php:475 tmp/export/server.php:310
+#: tmp/export/server.php:470
+msgid "month"
+msgstr "Mois"
+
+#: server.php:317 server.php:477 server.php:479 tmp/export/server.php:312
+#: tmp/export/server.php:472 tmp/export/server.php:474
+msgid "harvested"
+msgstr "Produit"
+
+#: server.php:318 server.php:480 server.php:481 tmp/export/server.php:313
+#: tmp/export/server.php:475 tmp/export/server.php:476
+msgid "difference"
+msgstr "Différence"
+
+#: server.php:319 server.php:477 server.php:478 server.php:481
+#: tmp/export/server.php:314 tmp/export/server.php:472
+#: tmp/export/server.php:473 tmp/export/server.php:476
+msgid "cum."
+msgstr "cum."
+
+#: server.php:340 server.php:380 server.php:418 server.php:467
+#: tmp/export/server.php:335 tmp/export/server.php:375
+#: tmp/export/server.php:413 tmp/export/server.php:462
+msgid "Max Grid Power"
+msgstr "Puissance maximale du réseau"
+
+#: server.php:342 server.php:382 tmp/export/server.php:337
+#: tmp/export/server.php:377
+msgid "Select period"
+msgstr "Choisir la période"
+
+#: server.php:343 server.php:383 server.php:421 server.php:469
+#: tmp/export/server.php:338 tmp/export/server.php:378
+#: tmp/export/server.php:416 tmp/export/server.php:464
+msgid "TotalKWh"
+msgstr "kWh Totaux"
+
+#: server.php:345 server.php:385 server.php:423 server.php:471
+#: tmp/export/server.php:340 tmp/export/server.php:380
+#: tmp/export/server.php:418 tmp/export/server.php:466
+msgid "kwh"
+msgstr "kWh"
+
+#: server.php:346 server.php:386 server.php:424 server.php:472
+#: tmp/export/server.php:341 tmp/export/server.php:381
+#: tmp/export/server.php:419 tmp/export/server.php:467
+msgid "History values"
+msgstr "Historique des valeurs"
+
+#: server.php:347 server.php:387 server.php:425 server.php:473
+#: tmp/export/server.php:342 tmp/export/server.php:382
+#: tmp/export/server.php:420 tmp/export/server.php:468
+msgid "loading"
+msgstr "Chargement"
+
+#: server.php:348 server.php:388 server.php:426 server.php:474
+#: tmp/export/server.php:343 tmp/export/server.php:383
+#: tmp/export/server.php:421 tmp/export/server.php:469
+msgid "watt"
+msgstr "Watt"
+
+#: server.php:350 tmp/export/server.php:345
+msgid "The values below are grouped by Month of the selected Year"
+msgstr ""
+"Les valeurs ci-dessous sont regroupées par mois de l'année sélectionnée"
+
+#: server.php:391 tmp/export/server.php:386
+msgid "The values below are grouped by Day of the selected Month"
+msgstr "Les valeurs ci-dessous sont regroupées par jour du mois sélectionné"
+
+#: server.php:420 tmp/export/server.php:415
+#, fuzzy
+msgid "time"
+msgstr "durée de fonctionnement"
+
+#: server.php:432 tmp/export/server.php:427
+#: tmp/export/admin/admin-server.php:80 admin/admin-server.php:81
+msgid "inverter"
+msgstr "Onduleur"
+
+#: server.php:433 tmp/export/server.php:428
+msgid "compare"
+msgstr "Comparer"
+
+#: server.php:434 tmp/export/server.php:429
+msgid "to"
+msgstr "à"
+
+#: server.php:507 server.php:558 tmp/export/server.php:502
+#: tmp/export/server.php:553
+msgid "Some Figures*"
+msgstr "Chiffres clés *"
+
+#: server.php:508 server.php:559 tmp/export/server.php:503
+#: tmp/export/server.php:554
+msgid "By"
+msgstr "Par"
+
+#: server.php:509 tmp/export/server.php:504
+msgid "status"
+msgstr "statut"
+
+#: server.php:510 tmp/export/server.php:505
+msgid "IT"
+msgstr "IT"
+
+#: server.php:511 server.php:561 tmp/export/server.php:506
+#: tmp/export/server.php:556
+msgid "Total"
+msgstr "Total"
+
+#: server.php:512 server.php:562 tmp/export/server.php:507
+#: tmp/export/server.php:557
+msgid "Avg. Day"
+msgstr "Moy. jour"
+
+#: server.php:517 server.php:567 tmp/export/server.php:512
+#: tmp/export/server.php:562
+msgid "overall"
+msgstr "Total"
+
+#: server.php:518 tmp/export/server.php:513
+msgid "Inv."
+msgstr "Ond."
+
+#: server.php:519 tmp/export/server.php:514
+msgid "grid"
+msgstr "réseau"
+
+#: server.php:523 tmp/export/server.php:518
+msgid "W"
+msgstr "W"
+
+#: server.php:524 server.php:569 tmp/export/server.php:519
+#: tmp/export/server.php:564
+msgid "ratio"
+msgstr "Rapport"
+
+#: server.php:525 server.php:570 tmp/export/server.php:520
+#: tmp/export/server.php:565
+msgid "overall**"
+msgstr "Total **"
+
+#: server.php:526 server.php:571 tmp/export/server.php:521
+#: tmp/export/server.php:566
+msgid "kWh/kWp"
+msgstr "kWh/kWc"
+
+#: server.php:527 server.php:572 tmp/export/server.php:522
+#: tmp/export/server.php:567
+msgid "* All figures are in kWh"
+msgstr "* Tous les chiffres sont en KWh"
+
+#: server.php:528 server.php:573 tmp/export/server.php:523
+#: tmp/export/server.php:568
+msgid "** Incl. initial kWh"
+msgstr "** KWh initiaux inclus"
+
+#: server.php:530 tmp/export/server.php:525
+msgid "offline"
+msgstr "Hors ligne"
+
+#: server.php:531 tmp/export/server.php:526
+msgid "online"
+msgstr "En ligne"
+
+#: server.php:532 tmp/export/server.php:527
+msgid "standby"
+msgstr "veille"
+
+#: server.php:539 tmp/export/server.php:534
+msgid "DC Power"
+msgstr "Puissance DC"
+
+#: server.php:540 tmp/export/server.php:535
+msgid "AC Power"
+msgstr "Puissance AC"
+
+#: tmp/export/admin/admin-server.php:71 tmp/export/admin/admin-server.php:77
+#: admin/admin-server.php:72 admin/admin-server.php:78
+msgid "team"
+msgstr "équipe"
+
+#: tmp/export/admin/admin-server.php:71 admin/admin-server.php:72
+msgid "name"
+msgstr "nom"
+
+#: tmp/export/admin/admin-server.php:72 tmp/export/admin/admin-server.php:74
+#: admin/admin-server.php:73 admin/admin-server.php:75
+msgid "energy"
+msgstr "énergie"
+
+#: tmp/export/admin/admin-server.php:74 tmp/export/admin/admin-server.php:78
+#: admin/admin-server.php:75 admin/admin-server.php:79
+msgid "average"
+msgstr "moyenne"
+
+#: tmp/export/admin/admin-server.php:76 admin/admin-server.php:77
+msgid "number"
+msgstr "nombre"
+
+#: tmp/export/admin/admin-server.php:76 admin/admin-server.php:77
+msgid "of"
+msgstr ""
+
+#: tmp/export/admin/admin-server.php:76 admin/admin-server.php:77
+msgid "Systems"
+msgstr "Systèmes"
+
+#: tmp/export/admin/admin-server.php:77 tmp/export/admin/admin-server.php:78
+#: admin/admin-server.php:78 admin/admin-server.php:79
+msgid "size"
+msgstr "Taille"
+
+#: tmp/export/admin/admin-server.php:79 admin/admin-server.php:80
+msgid "outputs"
+msgstr "sorties"
+
+#: tmp/export/admin/admin-server.php:362 tmp/export/admin/admin-server.php:369
+#: tmp/export/admin/admin-server.php:378 admin/admin-server.php:363
+#: admin/admin-server.php:370 admin/admin-server.php:379
+msgid "Validation"
+msgstr "Validation"
+
+#: tmp/export/admin/admin-server.php:363 admin/admin-server.php:364
+msgid "Old password is invalid:"
+msgstr "L'ancien mot de passe est invalide :"
+
+#: tmp/export/admin/admin-server.php:370 admin/admin-server.php:371
+msgid "New password should be at least 6 characters"
+msgstr "Le nouveau mot de passe doit contenir au moins 6 caractères"
+
+#: tmp/export/admin/admin-server.php:379 admin/admin-server.php:380
+msgid "New passwords are not the same"
+msgstr "Les nouveaux mots de passe ne sont pas les mêmes"
+
+#: tmp/export/admin/admin-server.php:386 admin/admin-server.php:387
+msgid "Success"
+msgstr "Réussi"
+
+#: tmp/export/admin/admin-server.php:387 admin/admin-server.php:388
+msgid "Password successfully changed"
+msgstr "Le mot de passe a été changé avec succès"
+
+#: tmp/export/addon/SmartMeterAddon.php:252
+#: tmp/export/addon/SmartMeterAddon.php:259
+#: tmp/export/addon/SmartMeterAddon.php:261
+#: tmp/export/addon/SmartMeterAddon.php:262
+#: tmp/export/addon/SmartMeterAddon.php:263
+#: tmp/export/addon/SmartMeterAddon.php:264 addon/SmartMeterAddon.php:252
+#: addon/SmartMeterAddon.php:259 addon/SmartMeterAddon.php:261
+#: addon/SmartMeterAddon.php:262 addon/SmartMeterAddon.php:263
+#: addon/SmartMeterAddon.php:264
+msgid "Cum."
+msgstr "Cum."
+
+#: tmp/export/addon/SmartMeterAddon.php:252
+#: tmp/export/addon/SmartMeterAddon.php:254
+#: tmp/export/addon/SmartMeterAddon.php:261
+#: tmp/export/addon/SmartMeterAddon.php:262
+#: tmp/export/addon/SmartMeterAddon.php:263
+#: tmp/export/addon/SmartMeterAddon.php:264
+#: tmp/export/addon/SmartMeterAddon.php:265
+#: tmp/export/addon/SmartMeterAddon.php:266
+#: tmp/export/addon/SmartMeterAddon.php:267
+#: tmp/export/addon/SmartMeterAddon.php:268
+#: tmp/export/addon/SmartMeterAddon.php:269 addon/SmartMeterAddon.php:252
+#: addon/SmartMeterAddon.php:254 addon/SmartMeterAddon.php:261
+#: addon/SmartMeterAddon.php:262 addon/SmartMeterAddon.php:263
+#: addon/SmartMeterAddon.php:264 addon/SmartMeterAddon.php:265
+#: addon/SmartMeterAddon.php:266 addon/SmartMeterAddon.php:267
+#: addon/SmartMeterAddon.php:268 addon/SmartMeterAddon.php:269
+msgid "(W)"
+msgstr "(W)"
+
+#: tmp/export/addon/SmartMeterAddon.php:253
+#: tmp/export/addon/SmartMeterAddon.php:259
+#: tmp/export/addon/SmartMeterAddon.php:260 addon/SmartMeterAddon.php:253
+#: addon/SmartMeterAddon.php:259 addon/SmartMeterAddon.php:260
+msgid "Gas"
+msgstr "Gaz"
+
+#: tmp/export/addon/SmartMeterAddon.php:253 addon/SmartMeterAddon.php:253
+msgid "(L)"
+msgstr "(L)"
+
+#: tmp/export/addon/SmartMeterAddon.php:254
+#: tmp/export/addon/SmartMeterAddon.php:269 addon/SmartMeterAddon.php:254
+#: addon/SmartMeterAddon.php:269
+msgid "Actual"
+msgstr "Actuel"
+
+#: tmp/export/addon/SmartMeterAddon.php:259
+#: tmp/export/addon/SmartMeterAddon.php:260 addon/SmartMeterAddon.php:259
+#: addon/SmartMeterAddon.php:260
+msgid "(l)"
+msgstr "(l)"
+
+#: tmp/export/addon/SmartMeterAddon.php:260 addon/SmartMeterAddon.php:260
+msgid "Smooth"
+msgstr "ALisse"
+
+#: tmp/export/addon/SmartMeterAddon.php:261
+#: tmp/export/addon/SmartMeterAddon.php:263 addon/SmartMeterAddon.php:261
+#: addon/SmartMeterAddon.php:263
+msgid "low"
+msgstr "bas"
+
+#: tmp/export/addon/SmartMeterAddon.php:261
+#: tmp/export/addon/SmartMeterAddon.php:262
+#: tmp/export/addon/SmartMeterAddon.php:265
+#: tmp/export/addon/SmartMeterAddon.php:266
+#: tmp/export/addon/SmartMeterAddon.php:269 addon/SmartMeterAddon.php:261
+#: addon/SmartMeterAddon.php:262 addon/SmartMeterAddon.php:265
+#: addon/SmartMeterAddon.php:266 addon/SmartMeterAddon.php:269
+msgid "usage"
+msgstr "utilisation"
+
+#: tmp/export/addon/SmartMeterAddon.php:262
+#: tmp/export/addon/SmartMeterAddon.php:264 addon/SmartMeterAddon.php:262
+#: addon/SmartMeterAddon.php:264
+msgid "high"
+msgstr "haut"
+
+#: tmp/export/addon/SmartMeterAddon.php:263
+#: tmp/export/addon/SmartMeterAddon.php:264
+#: tmp/export/addon/SmartMeterAddon.php:267
+#: tmp/export/addon/SmartMeterAddon.php:268 addon/SmartMeterAddon.php:263
+#: addon/SmartMeterAddon.php:264 addon/SmartMeterAddon.php:267
+#: addon/SmartMeterAddon.php:268
+msgid "return"
+msgstr "retour"
+
+#: tmp/export/addon/SmartMeterAddon.php:265
+#: tmp/export/addon/SmartMeterAddon.php:267 addon/SmartMeterAddon.php:265
+#: addon/SmartMeterAddon.php:267
+msgid "Low"
+msgstr "Bas"
+
+#: tmp/export/addon/SmartMeterAddon.php:266
+#: tmp/export/addon/SmartMeterAddon.php:268 addon/SmartMeterAddon.php:266
+#: addon/SmartMeterAddon.php:268
+msgid "High"
+msgstr "Haut"
+
+#: tmp/export/classes/PDODataAdapter.php:772
+#: tmp/export/classes/PDODataAdapter.php:773
+#: tmp/export/classes/PDODataAdapter.php:774
+#: tmp/export/classes/PDODataAdapter.php:775 classes/PDODataAdapter.php:774
+#: classes/PDODataAdapter.php:775 classes/PDODataAdapter.php:776
+#: classes/PDODataAdapter.php:777
+msgid "Grid"
+msgstr "Rés."
+
+#: tmp/export/classes/PDODataAdapter.php:1642
+#: tmp/export/classes/PDODataAdapter.php:2149 classes/PDODataAdapter.php:1635
+#: classes/PDODataAdapter.php:2155
+msgid "equal"
+msgstr "égal"
+
+#: tmp/export/classes/PDODataAdapter.php:2145 classes/PDODataAdapter.php:2151
+msgid "up"
+msgstr "haut"
+
+#: tmp/export/classes/PDODataAdapter.php:2147 classes/PDODataAdapter.php:2153
+msgid "down"
+msgstr "bas"
+
+#: tmp/export/template/green/index.php:43 template/green/index.php:43
+msgid "Dashboard"
+msgstr "Résumé"
+
+#: tmp/export/template/green/index.php:47 template/green/index.php:47
+msgid "Details"
+msgstr "Détails"
+
+#: tmp/export/template/green/index.php:48 template/green/index.php:48
+msgid "Compare"
+msgstr "Comparaison"
+
+#: tmp/export/template/green/index.php:49 template/green/index.php:49
+msgid "Production"
+msgstr "Production"
+
+#: tmp/export/template/green/index.php:50 template/green/index.php:50
+msgid "Other"
+msgstr "Autre"
+
+#: tmp/export/template/green/index.php:89 template/green/index.php:89
+msgid "version"
+msgstr "version"
+
+#~ msgid "total Energy"
+#~ msgstr "Energie totale"
+
+#~ msgid "Of"
+#~ msgstr "de"
+
+#~ msgid "sleeping"
+#~ msgstr "slaapt"
+
+#~ msgid "awake"
+#~ msgstr "actief"
