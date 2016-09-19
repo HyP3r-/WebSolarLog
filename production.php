@@ -4,16 +4,16 @@ Session::initializeLight();
 
 $config = Session::getConfig();
 
-require_once("template/" .  $config->template . "/header.php");
-require_once("template/" .  $config->template . "/index.php");
+require_once("template/" . $config->template . "/header.php");
+require_once("template/" . $config->template . "/index.php");
 ?>
-	<script type="text/javascript">
+<script type="text/javascript">
     // Make sure the page is loaded
-	$(function(){
-		WSL.init_production("#content"); // Initial load fast
-	});
-	analyticsJSCodeBlock();
-	</script>
-	
+    $(function () {
+        WSL.init_production("#content"); // Initial load fast
+    });
+    analyticsJSCodeBlock();
+</script>
+
 </body>
 </html>

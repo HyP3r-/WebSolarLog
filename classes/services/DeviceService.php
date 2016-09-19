@@ -1,11 +1,13 @@
 <?php
 
-class DeviceService {
+class DeviceService
+{
 
     public static $tbl = "inverter";
     public $panelService;
 
-    function __construct() {
+    function __construct()
+    {
         $this->panelService = new PanelService();
         HookHandler::getInstance()->add("onJanitorDbCheck", "DeviceService.janitorDbCheck");
     }
@@ -15,7 +17,8 @@ class DeviceService {
      * @param Device $object
      * @return Device
      */
-    public function save(Device $object) {
+    public function save(Device $object)
+    {
         $bObject = ($object->id > 0) ? R::load(self::$tbl, $object->id) : R::dispense(self::$tbl);
         $bObject = $this->toBean($object, $bObject);
         $object->id = R::store($bObject);
@@ -27,7 +30,8 @@ class DeviceService {
      * @param int $id
      * @return Device
      */
-    public function load($id) {
+    public function load($id)
+    {
         $bObject = R::load(self::$tbl, $id);
         if ($bObject->id > 0) {
             $object = $this->toObject($bObject);
@@ -35,7 +39,8 @@ class DeviceService {
         return isset($object) ? $object : new Device();
     }
 
-    public function checkCommunicationUsed($communicationId) {
+    public function checkCommunicationUsed($communicationId)
+    {
         $bObjects = R::find(self::$tbl, ' 	communicationId = ' . $communicationId);
         $objects = array();
         foreach ($bObjects as $bObject) {
@@ -49,7 +54,8 @@ class DeviceService {
      * @param int $id
      * @return bool
      */
-    public function delete($id) {
+    public function delete($id)
+    {
         // load bean to delete
         $bObject = R::load(self::$tbl, $id);
         $object = $this->toObject($bObject);
@@ -72,7 +78,8 @@ class DeviceService {
      * Retrieves all devices
      * @return Array of Device
      */
-    public function getAllDevices() {
+    public function getAllDevices()
+    {
         $bObjects = R::find(self::$tbl);
         $objects = array();
         foreach ($bObjects as $bObject) {
@@ -86,7 +93,8 @@ class DeviceService {
      * @param int $deviceId
      * @param int $mode
      */
-    public function setTestMode($deviceId, $mode = false) {
+    public function setTestMode($deviceId, $mode = false)
+    {
         //load device
         $device = $this->load($deviceId);
 
@@ -102,7 +110,8 @@ class DeviceService {
      * Retrieves all active devices
      * @return Array of Device
      */
-    public function getActiveDevices() {
+    public function getActiveDevices()
+    {
         $bObjects = R::find(self::$tbl, ' active = 1 ');
         $objects = array();
         foreach ($bObjects as $bObject) {
@@ -111,7 +120,8 @@ class DeviceService {
         return $objects;
     }
 
-    public function getSupportedDevices() {
+    public function getSupportedDevices()
+    {
         return array(
             array('value' => 'AURORA', 'type' => 'production', 'name' => 'Aurora'),
             array('value' => 'DeltaSolivia', 'type' => 'production', 'name' => 'DeltaSolivia'),
@@ -135,7 +145,8 @@ class DeviceService {
      * @param Device $device // Device object
      * @return boolean // changed yes or no;
      */
-    function changeDeviceStatus(Device $device, $state) {
+    function changeDeviceStatus(Device $device, $state)
+    {
         // get the device
         $freshDevice = $this->load($device->id);
 
@@ -160,7 +171,8 @@ class DeviceService {
         return $changed;
     }
 
-    public function janitorDbCheck() {
+    public function janitorDbCheck()
+    {
         HookHandler::getInstance()->fire("onDebug", "DeviceService janitor DB Check");
         // Get an device and save it, to make sure al fields are available in the database
         $objects = $this->getAllDevices();
@@ -182,7 +194,8 @@ class DeviceService {
         R::exec("CREATE INDEX history_deviceId ON 'history' ( 'deviceId' ) ;");
     }
 
-    private function toBean($object, $bObject) {
+    private function toBean($object, $bObject)
+    {
         $bObject->active = $object->active;
         $bObject->deviceApi = $object->deviceApi;
         $bObject->type = $object->type;
@@ -225,7 +238,8 @@ class DeviceService {
         return $bObject;
     }
 
-    private function toObject($bObject) {
+    private function toObject($bObject)
+    {
         $object = new Device();
         if (!isset($bObject)) {
             return $object;

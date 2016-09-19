@@ -1,38 +1,45 @@
 <?php
-Class SmartMeter implements DeviceApi {
+
+Class SmartMeter implements DeviceApi
+{
     private $ADR;
     private $DEBUG;
     private $PATH;
-    
+
     private $device;
     private $communication;
     private $useCommunication = false;
 
-    function __construct($path, $address, $debug) {
+    function __construct($path, $address, $debug)
+    {
         $this->ADR = $address;
         $this->DEBUG = $debug;
         $this->PATH = $path;
         $this->useCommunication = false;
     }
-    
-    function setCommunication(Communication $communication, Device $device) {
-    	$this->communication = $communication;
-    	$this->device = $device;
-    	$this->useCommunication = true;
+
+    function setCommunication(Communication $communication, Device $device)
+    {
+        $this->communication = $communication;
+        $this->device = $device;
+        $this->useCommunication = true;
     }
-    
+
     /**
      * @see DeviceApi::getState()
      */
-    public function getState() {
-    	return 0; // A smartmeter should never be offline iff the cable is connected
-    }
-    
-    public function getAlarms() {
-    	// not supported
+    public function getState()
+    {
+        return 0; // A smartmeter should never be offline iff the cable is connected
     }
 
-    public function getData() {
+    public function getAlarms()
+    {
+        // not supported
+    }
+
+    public function getData()
+    {
         if ($this->DEBUG) {
             //return $this->execute('-b -c -T ' . $this->COMOPTION . ' -d0 -e 2>'. Util::getErrorFile($this->INVTNUM));
             return '/XMX5XMXABCE000024595
@@ -59,54 +66,61 @@ Class SmartMeter implements DeviceApi {
             return trim($this->execute());
         }
     }
-    
-    public function getLiveData() {
-    	//echo "\r\ngetLiveData\r\n";
-    	$data = explode("\n",$this->getData());
-    	//echo "\r\ndata:".var_dump($data)."\r\n";
-    	return SmartMeterConverter::toLiveSmartMeter($data);
+
+    public function getLiveData()
+    {
+        //echo "\r\ngetLiveData\r\n";
+        $data = explode("\n", $this->getData());
+        //echo "\r\ndata:".var_dump($data)."\r\n";
+        return SmartMeterConverter::toLiveSmartMeter($data);
     }
 
-    public function getInfo() {
+    public function getInfo()
+    {
         // not supported
     }
 
-    public function getHistoryData() {
+    public function getHistoryData()
+    {
         // not supported
     }
 
-    public function syncTime() {
+    public function syncTime()
+    {
         // not supported
     }
-    
-    public function doCommunicationTest() {
-    	$result = false;
-    	$data = $this->getData();
-    	if ($data) {
-    		$result = true;
-    	}
-    	return array("result"=>$result, "testData"=>$data);
+
+    public function doCommunicationTest()
+    {
+        $result = false;
+        $data = $this->getData();
+        if ($data) {
+            $result = true;
+        }
+        return array("result" => $result, "testData" => $data);
     }
 
-    private function execute() {
-		$uri = "";
-		if ($this->useCommunication === true) {
-			$uri = $this->communication->uri . " " . $this->communication->port;
-		} else {
-			$uri = $this->PATH;
-		}
-    	
+    private function execute()
+    {
+        $uri = "";
+        if ($this->useCommunication === true) {
+            $uri = $this->communication->uri . " " . $this->communication->port;
+        } else {
+            $uri = $this->PATH;
+        }
+
         // Check for dangerous programs
-  		$badAppString = "rm,cat,tail,reboot,halt,shutdown,fdisk,mkfs,sh,cp,mv,dd";      
-    	$badApp = explode(",",$badAppString);
-    	foreach ($badApp as $app) {
-    		if (strpos($uri, $app . " ") !== false) {
-    			HookHandler::getInstance()->fire("onError", "SmartMeter path contains blacklisted program: " . $app);
-    			return null;
-    		}
-    	}
-    	
-    	return shell_exec($uri);
+        $badAppString = "rm,cat,tail,reboot,halt,shutdown,fdisk,mkfs,sh,cp,mv,dd";
+        $badApp = explode(",", $badAppString);
+        foreach ($badApp as $app) {
+            if (strpos($uri, $app . " ") !== false) {
+                HookHandler::getInstance()->fire("onError", "SmartMeter path contains blacklisted program: " . $app);
+                return null;
+            }
+        }
+
+        return shell_exec($uri);
     }
 }
+
 ?>

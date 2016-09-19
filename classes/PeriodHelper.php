@@ -1,18 +1,21 @@
 <?php
-class PeriodHelper {
+
+class PeriodHelper
+{
     /**
      * Check if the period has been passed
      * @param string $name
      * @param int $interval in minutes
      * @return boolean
      */
-    public static function isPeriodJob($name, $interval) {
+    public static function isPeriodJob($name, $interval)
+    {
         $currenttime = time();
         $jobname = 'job_' . $name;
 
         // Retrieve record
-        $bean = R::findOne('periodhelper', ' name = :name', array(':name'=>$jobname));
-        if (!$bean){
+        $bean = R::findOne('periodhelper', ' name = :name', array(':name' => $jobname));
+        if (!$bean) {
             $bean = R::dispense('periodhelper');
             $bean->name = $jobname;
             $bean->lastrun = 0;

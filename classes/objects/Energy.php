@@ -1,8 +1,10 @@
 <?php
-class Energy {
-	public $id;
-	public $INV;
-	public $deviceId;
+
+class Energy
+{
+    public $id;
+    public $INV;
+    public $deviceId;
     public $SDTE;
     public $time;
     public $KWH;
@@ -10,4 +12,5 @@ class Energy {
     public $KWHKWP; // kWh per kWp
     public $co2;
 }
+
 ?>

@@ -1,6 +1,9 @@
 <?php
-class GraphAxe {
+
+class GraphAxe
+{
     public $label;
     public $labelRenderer;
 }
+
 ?>

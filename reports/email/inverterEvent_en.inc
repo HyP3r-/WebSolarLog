@@ -3,7 +3,7 @@ Hello,<br/>
 WebSolarLog experienced an {{event.type}} on {{inverter.name}}.<br/>
 <br/>
 {{event.text}}
-<br />
+<br/>
 Please check if everything is alright.<br/>
-<br />
+<br/>
 WebSolarLog

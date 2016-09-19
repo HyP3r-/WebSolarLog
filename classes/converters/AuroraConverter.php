@@ -1,4 +1,5 @@
 <?php
+
 class AuroraConverter
 {
 
@@ -11,22 +12,22 @@ class AuroraConverter
     {
         // Check if the input line is valid
         if ($inputLine == null || trim($inputLine) == "") {
-        	return null;
+            return null;
         }
 
         // Split on a serie of spaces (not one)
-        $data = preg_split("/[[:space:]]+/",$inputLine);
+        $data = preg_split("/[[:space:]]+/", $inputLine);
 
         // Check if the record is okay
         if (!empty($data[22]) && trim($data[22]) != "OK") {
-			throw new ConverterException("not a OK response from Aurora:\r\n".print_r($inputLine,true));
+            throw new ConverterException("not a OK response from Aurora:\r\n" . print_r($inputLine, true));
         }
-        
+
         $live = new Live();
         $live->type = 'production';
         if (!empty ($data[0])) {
             $live->SDTE = $data[0];
-            $live->time = strtotime(substr($data[0], 0, 4)."-".substr($data[0], 4, 2)."-".substr($data[0], 6, 2)." ".substr($data[0], 9, 2).":".substr($data[0], 12, 2).":".substr($data[0], 15, 2));
+            $live->time = strtotime(substr($data[0], 0, 4) . "-" . substr($data[0], 4, 2) . "-" . substr($data[0], 6, 2) . " " . substr($data[0], 9, 2) . ":" . substr($data[0], 12, 2) . ":" . substr($data[0], 15, 2));
         }
         if (!empty ($data[1])) {
             $live->I1V = $data[1];
@@ -70,31 +71,32 @@ class AuroraConverter
         if (!empty ($data[19])) {
             $live->KWHT = $data[19];
         }
-        
+
         // This line is only valid if GP and KWHT are filled with data
         if (empty($live->KWHT) || empty($live->GP)) {
-        	return null;
+            return null;
         }
 
         return $live;
     }
-    
-    public static function toDeviceHistory($line) {
-		// Split the line based on multiple spaces between two values
-    	$parts = preg_split('/\s+/', $line);
-    	if (count($parts) < 2) {
-    		return null;
-    	}
 
-    	// Create the object
-    	$deviceHistory = new DeviceHistory();
-    	$deviceHistory->amount = (double) $parts[1];
-    	$deviceHistory->time = ($parts[0] != "") ? strtotime($parts[0]) : 0;
-    	
-    	// Only return if we have an valid time
-    	if ($deviceHistory->time > 0) {
-    		return $deviceHistory;
-    	}
-    	return null;
+    public static function toDeviceHistory($line)
+    {
+        // Split the line based on multiple spaces between two values
+        $parts = preg_split('/\s+/', $line);
+        if (count($parts) < 2) {
+            return null;
+        }
+
+        // Create the object
+        $deviceHistory = new DeviceHistory();
+        $deviceHistory->amount = (double)$parts[1];
+        $deviceHistory->time = ($parts[0] != "") ? strtotime($parts[0]) : 0;
+
+        // Only return if we have an valid time
+        if ($deviceHistory->time > 0) {
+            return $deviceHistory;
+        }
+        return null;
     }
 }

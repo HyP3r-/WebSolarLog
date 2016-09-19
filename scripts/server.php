@@ -9,9 +9,9 @@ Session::initialize();
 
 // Check if there is already an worker running
 $pid = new Pid(dirname(__FILE__));
-if($pid->isAlreadyRunning) {
-	echo "Already running.\n";
-	exit;
+if ($pid->isAlreadyRunning) {
+    echo "Already running.\n";
+    exit;
 }
 
 $energyUpdateRate = 10 * 60; // 10 minute refreshrate
@@ -28,20 +28,20 @@ $historyDataStartTime = Util::createOnceADayJob("12", "30"); // Only run at 12:3
 
 // Create the device jobs
 foreach (Session::getConfig()->devices as $device) {
-	// TODO
- 	$historyUpdateRate = (empty($device->historyRate)) ? 300 : $device->historyRate; // prevent faster interval then 60sec.
-	$historyStartTime = Util::createTimeForWholeInterval($historyUpdateRate);
-	
-	QueueServer::getInstance()->add(new QueueItem(time(), "DeviceHandler.handleLive", array($device), true, $device->refreshTime));
-	QueueServer::getInstance()->add(new QueueItem($historyStartTime, "DeviceHandler.handleHistory", array($device), true, $historyUpdateRate));
-	QueueServer::getInstance()->add(new QueueItem($energyStartTime, "DeviceHandler.handleEnergy", array($device), true, $energyUpdateRate));
-	QueueServer::getInstance()->add(new QueueItem($infoStartTime, "DeviceHandler.handleInfo", array($device), true, $infoUpdateRate));
-	QueueServer::getInstance()->add(new QueueItem($alarmStartTime, "DeviceHandler.handleAlarm", array($device), true, $alarmUpdateRate));
-	QueueServer::getInstance()->add(new QueueItem($historyDataStartTime, "DeviceHandler.handleDeviceHistory", array($device), true, $historyDataUpdateRate));
+    // TODO
+    $historyUpdateRate = (empty($device->historyRate)) ? 300 : $device->historyRate; // prevent faster interval then 60sec.
+    $historyStartTime = Util::createTimeForWholeInterval($historyUpdateRate);
+
+    QueueServer::getInstance()->add(new QueueItem(time(), "DeviceHandler.handleLive", array($device), true, $device->refreshTime));
+    QueueServer::getInstance()->add(new QueueItem($historyStartTime, "DeviceHandler.handleHistory", array($device), true, $historyUpdateRate));
+    QueueServer::getInstance()->add(new QueueItem($energyStartTime, "DeviceHandler.handleEnergy", array($device), true, $energyUpdateRate));
+    QueueServer::getInstance()->add(new QueueItem($infoStartTime, "DeviceHandler.handleInfo", array($device), true, $infoUpdateRate));
+    QueueServer::getInstance()->add(new QueueItem($alarmStartTime, "DeviceHandler.handleAlarm", array($device), true, $alarmUpdateRate));
+    QueueServer::getInstance()->add(new QueueItem($historyDataStartTime, "DeviceHandler.handleDeviceHistory", array($device), true, $historyDataUpdateRate));
 }
 
 //special job for running the cache totals
-$cacheInputRate = Session::getConfig()->cacheInputRate; 
+$cacheInputRate = Session::getConfig()->cacheInputRate;
 $cacheJobUpdateRate = (empty($cacheInputRate) OR $cacheInputRate < 60) ? 60 : $cacheInputRate; // prevent faster interval then 60sec.
 $cacheStartTime = Util::createTimeForWholeInterval($cacheJobUpdateRate);
 QueueServer::getInstance()->add(new QueueItem($cacheStartTime, "HookHandler.fireFromQueue", array("onCacheJob"), true, $cacheJobUpdateRate));
@@ -69,12 +69,12 @@ QueueServer::getInstance()->add(new QueueItem(Util::createTimeForWholeInterval(3
 QueueServer::getInstance()->add(new QueueItem(Util::createTimeForWholeInterval(3600), "JanitorRest.clean", "", true, 3600));
 
 // PVoutput every 2,5 minutes 
-QueueServer::getInstance()->add(new QueueItem(Util::createTimeForWholeInterval(75), "PvOutputAddon.onJob","", true, 75));
+QueueServer::getInstance()->add(new QueueItem(Util::createTimeForWholeInterval(75), "PvOutputAddon.onJob", "", true, 75));
 
 // PVoutput Join WSL Team every day@00:15 and repeat it every 6 hours
 $PVoutputJoinTeamUpdateRate = 6 * 60 * 60;
 $PVoutputJoinTeamStartTime = Util::createOnceADayJob("00", "15"); // Only run at 00:15
-QueueServer::getInstance()->add(new QueueItem($PVoutputJoinTeamStartTime, "PvOutputAddon.joinAllDevicesToTeam","", true, $PVoutputJoinTeamUpdateRate));
+QueueServer::getInstance()->add(new QueueItem($PVoutputJoinTeamStartTime, "PvOutputAddon.joinAllDevicesToTeam", "", true, $PVoutputJoinTeamUpdateRate));
 
 
 // run Janitor DBcheck every day@01:00 

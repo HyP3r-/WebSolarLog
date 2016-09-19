@@ -1,6 +1,9 @@
 <?php
-class Day {
+
+class Day
+{
     public $time;
     public $data;
 }
+
 ?>

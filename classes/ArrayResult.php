@@ -33,4 +33,5 @@ class ArrayResult extends BaseResult
         $this->data = array();
     }
 }
+
 ?>

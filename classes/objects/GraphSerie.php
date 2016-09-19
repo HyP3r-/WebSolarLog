@@ -1,6 +1,9 @@
 <?php
-class GraphSerie {
+
+class GraphSerie
+{
     public $label;
     public $labelRenderer;
 }
+
 ?>

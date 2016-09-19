@@ -1,19 +1,19 @@
 <select id='user_lang' name='user_lang'>
-{{#data.languages}}
+    {{#data.languages}}
     {{#if_eq ../data.currentlanguage compare=this}}
-      <option selected="selected">{{this}}</option>
+    <option selected="selected">{{this}}</option>
     {{else}}
-      <option>{{this}}</option>
+    <option>{{this}}</option>
     {{/if_eq}}
-{{/data.languages}}
+    {{/data.languages}}
 </select>
 <script>
-$('#user_lang').bind('change', 
-	function() {
-		WSL.connect.getJSON('server.php?method=setLanguage&language='+$(this).val(), 
-			function() {
-				//refresh
-			}
-		);
-});
+    $('#user_lang').bind('change',
+            function () {
+                WSL.connect.getJSON('server.php?method=setLanguage&language=' + $(this).val(),
+                        function () {
+                            //refresh
+                        }
+                );
+            });
 </script>

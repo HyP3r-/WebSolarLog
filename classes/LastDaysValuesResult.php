@@ -1,4 +1,5 @@
 <?php
+
 class LastDaysValuesResult
 {
     public $label;
@@ -7,4 +8,5 @@ class LastDaysValuesResult
 
     public $data;
 }
+
 ?>

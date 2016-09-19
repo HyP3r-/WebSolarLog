@@ -1,8 +1,11 @@
 <?php
-class Social {
+
+class Social
+{
     public $TwitterDisplayName;
     public $TwitterAttached;
     public $FacebookDisplayName;
     public $FacebookAttached;
 }
+
 ?>

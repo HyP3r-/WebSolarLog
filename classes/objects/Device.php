@@ -1,6 +1,7 @@
 <?php
 
-class Device {
+class Device
+{
     public $id;
     public $deviceApi;
     public $type;
@@ -68,62 +69,64 @@ class Device {
         $this->pvoutputAutoJoinTeam = true;
     }
 
-    function getApi(Config $config) {
-    	$api = null;
-    	$deviceApi = strtoupper($this->deviceApi);
+    function getApi(Config $config)
+    {
+        $api = null;
+        $deviceApi = strtoupper($this->deviceApi);
         if ($deviceApi == "AURORA") {
             $api = new Aurora($config->aurorapath, $this->comAddress, $config->comDebug);
         }
-    	if ($deviceApi == "SMA-RS485") {
-	    	$api = new Sma($config->smagetpath, $this->comAddress, $config->comDebug);
-	    }
-    	if ($deviceApi == "SMA-BT") {
-	    	$api = new SMABlueTooth($config->smaspotpath, $this->comAddress, $config->comDebug);
-	    }
-    	if ($deviceApi == "SMA-BT-WSL") {
-	    	$api = new SMASpotWSL($config->smaspotWSLpath, $this->comAddress, $config->comDebug);
-	    }
-	    if ($deviceApi == "DIEHL-ETHERNET") {
-	    	$api = new Diehl($config->smagetpath, $this->comAddress, $config->comDebug);
-	    }
-	    if ($deviceApi == "DUTCHSMARTMETER") {
-	    	$api = new SmartMeter($config->smartmeterpath, $this->comAddress, $config->comDebug);
-	    }
+        if ($deviceApi == "SMA-RS485") {
+            $api = new Sma($config->smagetpath, $this->comAddress, $config->comDebug);
+        }
+        if ($deviceApi == "SMA-BT") {
+            $api = new SMABlueTooth($config->smaspotpath, $this->comAddress, $config->comDebug);
+        }
+        if ($deviceApi == "SMA-BT-WSL") {
+            $api = new SMASpotWSL($config->smaspotWSLpath, $this->comAddress, $config->comDebug);
+        }
+        if ($deviceApi == "DIEHL-ETHERNET") {
+            $api = new Diehl($config->smagetpath, $this->comAddress, $config->comDebug);
+        }
+        if ($deviceApi == "DUTCHSMARTMETER") {
+            $api = new SmartMeter($config->smartmeterpath, $this->comAddress, $config->comDebug);
+        }
         if ($deviceApi == "DUTCHSMARTMETERREMOTE") {
-	    	$api = new SmartMeterRemote($config->smartmeterpath, $this->comAddress, $config->comDebug);
-	    }
-	    if ($deviceApi == "SMARTMETERAMPYREMOTE") {
-	    	$api = new SmartMeterAmpyRemote($config->smartmeterpath, $this->comAddress, $config->comDebug);
-	    }
-    	if ($deviceApi == "OMNIK") {
+            $api = new SmartMeterRemote($config->smartmeterpath, $this->comAddress, $config->comDebug);
+        }
+        if ($deviceApi == "SMARTMETERAMPYREMOTE") {
+            $api = new SmartMeterAmpyRemote($config->smartmeterpath, $this->comAddress, $config->comDebug);
+        }
+        if ($deviceApi == "OMNIK") {
             $api = new Omnik($config->omnikpath, $this->comAddress, $config->comDebug);
         }
         if ($deviceApi == "MASTERVOLT") {
             $api = new MasterVolt($config->mastervoltpath, $this->comAddress, $config->comDebug);
-	    }
-    	if ($deviceApi == "SOLADINSOLGET") {
-	    	$api = new SoladinSolget($config->soladinSolgetpath, $this->comAddress, $config->comDebug);
-	    }
-	    if ($deviceApi == "DELTASOLIVIA") {
-	    	$api = new DeltaSolivia($config->deltaSoliviapath, $this->comAddress, $config->comDebug);
-	    }
-	     
-	    
-    	if ($deviceApi == "OPEN-WEATHER-MAP") {
-	    	$api = new WeatherOWM($config->latitude, $config->longitude);
-	    }
-    	if ($deviceApi == "KOSTALPIKO") {
-	    	$api = new KostalPiko($config->kostalpikopath, $this->comAddress, $config->comDebug);
-	    }
+        }
+        if ($deviceApi == "SOLADINSOLGET") {
+            $api = new SoladinSolget($config->soladinSolgetpath, $this->comAddress, $config->comDebug);
+        }
+        if ($deviceApi == "DELTASOLIVIA") {
+            $api = new DeltaSolivia($config->deltaSoliviapath, $this->comAddress, $config->comDebug);
+        }
 
-	    // Do we want to use the new communication?
-	    if ($config->useNewCommunication){
-		    $communicationService = new CommunicationService();
-		    $communication = $communicationService->load($this->communicationId);
-		    $api->setCommunication($communication, $this);
-	    }
-	    
-	    return $api;
+
+        if ($deviceApi == "OPEN-WEATHER-MAP") {
+            $api = new WeatherOWM($config->latitude, $config->longitude);
+        }
+        if ($deviceApi == "KOSTALPIKO") {
+            $api = new KostalPiko($config->kostalpikopath, $this->comAddress, $config->comDebug);
+        }
+
+        // Do we want to use the new communication?
+        if ($config->useNewCommunication) {
+            $communicationService = new CommunicationService();
+            $communication = $communicationService->load($this->communicationId);
+            $api->setCommunication($communication, $this);
+        }
+
+        return $api;
     }
 }
+
 ?>

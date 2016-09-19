@@ -26,12 +26,12 @@ $historyDataStartTime = Util::createOnceADayJob("12", "30"); // Only run at 12:3
 
 // Create the device jobs
 foreach (Session::getConfig()->devices as $device) {
-	QueueServer::getInstance()->add(new QueueItem(time(), "DeviceHandler.handleLive", array($device), true, $device->refreshTime));
-	QueueServer::getInstance()->add(new QueueItem($historyStartTime, "DeviceHandler.handleHistory", array($device), true, $historyUpdateRate));
-	QueueServer::getInstance()->add(new QueueItem($energyStartTime, "DeviceHandler.handleEnergy", array($device), true, $energyUpdateRate));
-	QueueServer::getInstance()->add(new QueueItem($infoStartTime, "DeviceHandler.handleInfo", array($device), true, $infoUpdateRate));
-	QueueServer::getInstance()->add(new QueueItem($alarmStartTime, "DeviceHandler.handleAlarm", array($device), true, $alarmUpdateRate));
-	QueueServer::getInstance()->add(new QueueItem($historyDataStartTime, "DeviceHandler.handleDeviceHistory", array($device), true, $historyDataUpdateRate));
+    QueueServer::getInstance()->add(new QueueItem(time(), "DeviceHandler.handleLive", array($device), true, $device->refreshTime));
+    QueueServer::getInstance()->add(new QueueItem($historyStartTime, "DeviceHandler.handleHistory", array($device), true, $historyUpdateRate));
+    QueueServer::getInstance()->add(new QueueItem($energyStartTime, "DeviceHandler.handleEnergy", array($device), true, $energyUpdateRate));
+    QueueServer::getInstance()->add(new QueueItem($infoStartTime, "DeviceHandler.handleInfo", array($device), true, $infoUpdateRate));
+    QueueServer::getInstance()->add(new QueueItem($alarmStartTime, "DeviceHandler.handleAlarm", array($device), true, $alarmUpdateRate));
+    QueueServer::getInstance()->add(new QueueItem($historyDataStartTime, "DeviceHandler.handleDeviceHistory", array($device), true, $historyDataUpdateRate));
 }
 
 //special job for running the cache totals
@@ -54,7 +54,7 @@ $slowJobStartTime = Util::createTimeForWholeInterval($slowJobUpdateRate);
 QueueServer::getInstance()->add(new QueueItem($slowJobStartTime, "HookHandler.fireFromQueue", array("onSlowJob"), true, $slowJobUpdateRate));
 
 // PVoutput every 2,5 minutes 
-QueueServer::getInstance()->add(new QueueItem(time() + 20, "PvOutputAddon.onJob","", true, 70));
+QueueServer::getInstance()->add(new QueueItem(time() + 20, "PvOutputAddon.onJob", "", true, 70));
 
 // This one is needed for the cron script only !!! (More then 60 seconds, else we could mis an history record)
 QueueServer::getInstance()->add(new QueueItem(time() + 70, "Common.exitCronProcess", "", false, 0, false));

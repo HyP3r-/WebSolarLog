@@ -1,5 +1,5 @@
 <?php
-set_time_limit ( 240 ); // 2 minutes
+set_time_limit(240); // 2 minutes
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
@@ -18,7 +18,7 @@ $dataPath = "../data/invt" . $inverterId . "/";
 // Read daily data
 $dailyPath = $dataPath . "csv/";
 foreach (scandir($dailyPath) as $file) {
-    if (is_file($dailyPath.$file))  {
+    if (is_file($dailyPath . $file)) {
         importDailyFile($dailyPath . $file, $inverterId, $adapter);
     }
 }
@@ -26,33 +26,35 @@ foreach (scandir($dailyPath) as $file) {
 // Reay energy data
 $energyPath = $dataPath . "production/";
 foreach (scandir($energyPath) as $file) {
-	echo $energyPath."".$file." ".$inverterId;
-    if (is_file($energyPath.$file) && Common::startsWith($file, "energy"))  {
+    echo $energyPath . "" . $file . " " . $inverterId;
+    if (is_file($energyPath . $file) && Common::startsWith($file, "energy")) {
         importEnergyFile($energyPath . $file, $inverterId, $adapter);
     }
 }
 
-function importDailyFile($src, $inverterId, PDODataAdapter $adapter) {
-	$historyService = new HistoryService();
-	
+function importDailyFile($src, $inverterId, PDODataAdapter $adapter)
+{
+    $historyService = new HistoryService();
+
     // Read all lines
     $lines = file($src);
     R::begin();
     foreach ($lines as $line) {
-    	$live = parseCsvToLive(trim($line, "\n"));
-    	$live->INV = $inverterId;
-    	$live->deviceId = $inverterId;
-    	$historyService->save($live->toHistory());
+        $live = parseCsvToLive(trim($line, "\n"));
+        $live->INV = $inverterId;
+        $live->deviceId = $inverterId;
+        $historyService->save($live->toHistory());
     }
     R::commit();
 }
 
-function importEnergyFile($src, $inverterId, PDODataAdapter $adapter) {
-	$energyService = new EnergyService();
-	
+function importEnergyFile($src, $inverterId, PDODataAdapter $adapter)
+{
+    $energyService = new EnergyService();
+
     // Read all lines
     $lines = file($src);
-    echo ($src . ": " . count($lines));
+    echo($src . ": " . count($lines));
     R::begin();
     $kwht = 0; // this only works if you have one file!
     foreach ($lines as $line) {
@@ -64,7 +66,8 @@ function importEnergyFile($src, $inverterId, PDODataAdapter $adapter) {
     R::commit();
 }
 
-function parseCsvToLive($csv) {
+function parseCsvToLive($csv)
+{
     // Convert comma to dot
     $csv = str_replace(",", ".", $csv);
     $fields = explode(";", $csv);
@@ -85,20 +88,21 @@ function parseCsvToLive($csv) {
     $live->INVT = $fields[12];
     $live->BOOT = $fields[13];
     $live->KWHT = $fields[14];
-    
+
     // Calculate the ratio fields
-    $IP = $live->I1P+$live->I2P;
-    
+    $IP = $live->I1P + $live->I2P;
+
     // Prevent division by zero error
     if (!empty($IP)) {
-    	$live->I1Ratio = ($live->I1P/$IP)*100;
-    	$live->I2Ratio = ($live->I2P/$IP)*100;
+        $live->I1Ratio = ($live->I1P / $IP) * 100;
+        $live->I2Ratio = ($live->I2P / $IP) * 100;
     }
-    
+
     return $live;
 }
 
-function parseCsvToEnergy($inverterId, $csv) {
+function parseCsvToEnergy($inverterId, $csv)
+{
     // Convert comma to dot
     $csv = str_replace(",", ".", $csv);
     $fields = explode(";", $csv);

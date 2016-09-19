@@ -1,5 +1,7 @@
 <?php
-Class SmartMeterAmpyRemote implements DeviceApi {
+
+Class SmartMeterAmpyRemote implements DeviceApi
+{
     private $ADR;
     private $DEBUG;
     private $PATH;
@@ -7,32 +9,37 @@ Class SmartMeterAmpyRemote implements DeviceApi {
     private $device;
     private $communication;
     private $useCommunication = false;
-    
-    function __construct($path, $address, $debug) {
+
+    function __construct($path, $address, $debug)
+    {
         $this->ADR = $address;
         $this->DEBUG = $debug;
         $this->PATH = $path;
     }
-    
-    
-    function setCommunication(Communication $communication, Device $device) {
-    	$this->communication = $communication;
-    	$this->device = $device;
-    	$this->useCommunication = true;
+
+
+    function setCommunication(Communication $communication, Device $device)
+    {
+        $this->communication = $communication;
+        $this->device = $device;
+        $this->useCommunication = true;
     }
-    
+
     /**
      * @see DeviceApi::getState()
      */
-    public function getState() {
-    	return 0; // Try to detect, as it will die when offline
+    public function getState()
+    {
+        return 0; // Try to detect, as it will die when offline
     }
 
-    public function getAlarms() {
-    	// not supported
+    public function getAlarms()
+    {
+        // not supported
     }
 
-    public function getData() {
+    public function getData()
+    {
         if ($this->DEBUG) {
             //return $this->execute('-b -c -T ' . $this->COMOPTION . ' -d0 -e 2>'. Util::getErrorFile($this->INVTNUM));
             return '/XMX5XMXABCE000024595
@@ -59,77 +66,84 @@ Class SmartMeterAmpyRemote implements DeviceApi {
             return trim($this->execute());
         }
     }
-    
-    public function getLiveData() {
-    	//echo "\r\ngetLiveData\r\n";
-    	$data = explode("\n",$this->getData());
-    	//echo "\r\ndata:".var_dump($data)."\r\n";
-    	return SmartMeterAmpyRemoteConverter::toLiveSmartMeter($data);
+
+    public function getLiveData()
+    {
+        //echo "\r\ngetLiveData\r\n";
+        $data = explode("\n", $this->getData());
+        //echo "\r\ndata:".var_dump($data)."\r\n";
+        return SmartMeterAmpyRemoteConverter::toLiveSmartMeter($data);
     }
 
-    public function getInfo() {
+    public function getInfo()
+    {
         // not supported
     }
 
-    public function getHistoryData() {
+    public function getHistoryData()
+    {
         //return $this->execute('-k');
         // not supported
     }
 
-    public function syncTime() {
+    public function syncTime()
+    {
         //return $this->execute('-L');
         // not supported
     }
-    
-    public function doCommunicationTest() {
-    	$result = false;
-    	$data = $this->getData();
-    	if ($data) {
-    		$result = true;
-    	}
-    	return array("result"=>$result, "testData"=>$data);
+
+    public function doCommunicationTest()
+    {
+        $result = false;
+        $data = $this->getData();
+        if ($data) {
+            $result = true;
+        }
+        return array("result" => $result, "testData" => $data);
     }
 
-    private function execute() {
-    	$server = "127.0.0.1";
-    	$port = 8080;
-    	$timeout = 15;
-    	if ($this->useCommunication === true) {
-    		$server = $this->communication->uri;
-    		$port = $this->communication->port;
-    		$timeout = $this->communication->timeout;
-    	} else {
-	    	$address = explode(":", $this->ADR);
-			if (count($address) != 2) {
-				$error = "Error: wrong address given " . $address;
-	    		HookHandler::getInstance()->fire("onError", $error);
-				return;
-			}
-    		
-	    	$server = $address[0];
-	    	$port = $address[1];
-    	}
-    	
-    	$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-    	if ($socket < 0) {
-    		HookHandler::getInstance()->fire("onError", "Could not create socket: " . socket_strerror(socket_last_error($socket)));
-    		return;
-    	}
-    	if (!@socket_set_option($socket,SOL_SOCKET, SO_RCVTIMEO, array("sec"=>$timeout, "usec"=>0))) {
-    		HookHandler::getInstance()->fire("onWarning", "Could not set socket timeout: " . socket_strerror(socket_last_error($socket)));
-    	}
-    	if (!@socket_connect($socket, $server, $port)) {
-    		HookHandler::getInstance()->fire("onError", "Could not create connection: " . socket_strerror(socket_last_error($socket)));
-    		return;
-    	}
-    	// Ampy Code;
-    	$msg = '/?!';
-    	socket_write($socket, $msg, strlen($msg)); //Send data
-    	sleep(1);
-    	// /Ampy Code;
-    	$result = socket_read($socket, '1024');
-    	socket_close($socket);
-    	return $result;
+    private function execute()
+    {
+        $server = "127.0.0.1";
+        $port = 8080;
+        $timeout = 15;
+        if ($this->useCommunication === true) {
+            $server = $this->communication->uri;
+            $port = $this->communication->port;
+            $timeout = $this->communication->timeout;
+        } else {
+            $address = explode(":", $this->ADR);
+            if (count($address) != 2) {
+                $error = "Error: wrong address given " . $address;
+                HookHandler::getInstance()->fire("onError", $error);
+                return;
+            }
+
+            $server = $address[0];
+            $port = $address[1];
+        }
+
+        $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+        if ($socket < 0) {
+            HookHandler::getInstance()->fire("onError", "Could not create socket: " . socket_strerror(socket_last_error($socket)));
+            return;
+        }
+        if (!@socket_set_option($socket, SOL_SOCKET, SO_RCVTIMEO, array("sec" => $timeout, "usec" => 0))) {
+            HookHandler::getInstance()->fire("onWarning", "Could not set socket timeout: " . socket_strerror(socket_last_error($socket)));
+        }
+        if (!@socket_connect($socket, $server, $port)) {
+            HookHandler::getInstance()->fire("onError", "Could not create connection: " . socket_strerror(socket_last_error($socket)));
+            return;
+        }
+        // Ampy Code;
+        $msg = '/?!';
+        socket_write($socket, $msg, strlen($msg)); //Send data
+        sleep(1);
+        // /Ampy Code;
+        $result = socket_read($socket, '1024');
+        socket_close($socket);
+        return $result;
     }
 }
+
 ?>

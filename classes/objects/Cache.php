@@ -1,9 +1,12 @@
 <?php
-class Cache {
+
+class Cache
+{
     public $key;
     public $value;
     public $module;
     public $page;
     public $timestamp;
 }
+
 ?>

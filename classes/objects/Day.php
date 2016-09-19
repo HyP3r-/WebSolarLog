@@ -1,5 +1,7 @@
 <?php
-class Day {
+
+class Day
+{
     public $points;
 }
 

@@ -1,4 +1,5 @@
 <?php
+
 class DayValuesResult
 {
     public $label;
@@ -6,4 +7,5 @@ class DayValuesResult
     public $kwht;
     public $data;
 }
+
 ?>

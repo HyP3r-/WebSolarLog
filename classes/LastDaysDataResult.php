@@ -18,7 +18,8 @@
  * @access    public
  * @since     File available since Release 0.0.0
  */
-class LastDaysDataResult extends BaseResult {
+class LastDaysDataResult extends BaseResult
+{
 
     // data
     public $data; // datapoints
@@ -34,4 +35,5 @@ class LastDaysDataResult extends BaseResult {
     }
 
 }
+
 ?>

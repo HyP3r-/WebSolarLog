@@ -37,9 +37,9 @@ Class KostalPiko implements DeviceApi
         if ($this->DEBUG) {
             return rand(0, 9);
         } else {
-            $output = $this->execute(' -s -q');
-            $lines = explode('\n', $output);
-            if ($lines[1] != '0') {
+            $output = trim($this->execute(" -s -q"));
+            $lines = explode("\n", $output);
+            if ($lines[1] != "0") {
                 return $lines[1];
             } else {
                 return "";
@@ -50,20 +50,20 @@ Class KostalPiko implements DeviceApi
     public function getData()
     {
         if ($this->DEBUG) {
-            return "0PRO,Piko,1,1.3.0,20130730
-1TIM,2013-07-30T13:22:35.801768,17419h59m39s,8411h39m19s
-2INF,90xxxKBNxxxxx,Piko_name,192.168.1.10,81,1,PIKO 8.3,2,3
-3STA,3,Running-MPP,28,---L123,0
-4ENE,11629195,13803
-5PWR,4760,4531,95.2
-6DC1,596.2,3.97,2370,51.21,94e0,4009
-7DC2,614.9,3.88,2390,51.21,94e0,c00a
-8DC3,0.0,0.00,0,51.29,94c0,0003
-9AC1,241.6,6.31,1528,60.14,8540
-10AC2,236.4,6.16,1466,60.14,8540
-11AC3,243.5,6.27,1537,60.07,8560
-12PRT,PIKO-Portal,01h48m49s
-13HST,00h07m36s,00h15m00s";
+            return "PRO,Piko,1,1.3.0,20130730
+TIM,2013-07-30T13:22:35.801768,17419h59m39s,8411h39m19s
+INF,90xxxKBNxxxxx,Piko_name,192.168.1.10,81,1,PIKO 8.3,2,3
+STA,3,Running-MPP,28,---L123,0
+ENE,11629195,13803
+PWR,4760,4531,95.2
+DC1,596.2,3.97,2370,51.21,94e0,4009
+DC2,614.9,3.88,2390,51.21,94e0,c00a
+DC3,0.0,0.00,0,51.29,94c0,0003
+AC1,241.6,6.31,1528,60.14,8540
+AC2,236.4,6.16,1466,60.14,8540
+AC3,243.5,6.27,1537,60.07,8560
+PRT,PIKO-Portal,01h48m49s
+HST,00h07m36s,00h15m00s";
         } else {
             return trim($this->execute(' -csv -q'));
         }

@@ -1,71 +1,75 @@
 #expectation {
-	display: table;
+    display: table;
 }
 
 #expectation_graph {
     display: block;
-    width: 100%;	
+    width: 100%;
 }
 
 .monthProd input {
-	width:38px;	
+    width: 38px;
 }
 
-.monthName{
-	width:40px;	
+.monthName {
+    width: 40px;
 }
-
 
 .expectation_row {
-	display:table-row;
+    display: table-row;
 }
 
 .expectation_cell {
-	display: table-cell;
+    display: table-cell;
 }
 
-
-.monthBAR{
-	width:44px;float:left;height:200px;
+.monthBAR {
+    width: 44px;
+    float: left;
+    height: 200px;
 }
 
 .monthBAR_label {
-	width:44px;float:left;
+    width: 44px;
+    float: left;
 }
 
-.monthIMG{
-	position:relative; top:0px;  background-color: green;width:20px;height:0px;display:block;
+.monthIMG {
+    position: relative;
+    top: 0px;
+    background-color: green;
+    width: 20px;
+    height: 0px;
+    display: block;
 }
 
 .image {
-	margin: 6px auto;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	background: url(test.jpg);
-	height: 250px;
-	width: 600px;
+    margin: 6px auto;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    background: url(test.jpg);
+    height: 250px;
+    width: 600px;
 }
 
-
 fieldset {
-	padding: 15px 20px;
-	margin: 15px 0px;
-	border: 1px solid #4B8902;
+    padding: 15px 20px;
+    margin: 15px 0px;
+    border: 1px solid #4B8902;
     width: 100%;
     line-height: 27px;
 }
 
-
 fieldset legend {
-	font-size: 18px;
-	font-weight: bold;
-	padding: 0px 5px;
-	border: 1px solid #4B8902;
-	background-color: #9CDB08;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0px 5px;
+    border: 1px solid #4B8902;
+    background-color: #9CDB08;
 }
 
 fieldset label {
-	width: 14em;
+    width: 14em;
     display: inline-block;
 }
 
@@ -74,19 +78,17 @@ fieldset input {
 }
 
 fieldset button {
-	font-size: 16px;
-	padding: 2px 5px;
+    font-size: 16px;
+    padding: 2px 5px;
 }
 
-
 fieldset fieldset {
-	padding: 10px 10px;
-	margin: 10px 0px;
-	border: 1px solid #4B8902;
+    padding: 10px 10px;
+    margin: 10px 0px;
+    border: 1px solid #4B8902;
     width: 98%;
     line-height: 27px;
 }
-
 
 .alert {
     background-color: #FCF8E3;
@@ -99,57 +101,61 @@ fieldset fieldset {
 }
 
 .alert-success {
-  color: #468847;
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
+    color: #468847;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
 }
 
 .alert-danger,
 .alert-error {
-  color: #b94a48;
-  background-color: #f2dede;
-  border-color: #eed3d7;
+    color: #b94a48;
+    background-color: #f2dede;
+    border-color: #eed3d7;
 }
 
 .alert-info {
-  color: #3a87ad;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
+    color: #3a87ad;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
 }
 
-.icon{
-	padding-top:6px;
-	cursor: pointer;
+.icon {
+    padding-top: 6px;
+    cursor: pointer;
 }
 
-#mapcanvas{
-	height:330px;width:400px;position:absolute;top:140px;left:0;
+#mapcanvas {
+    height: 330px;
+    width: 400px;
+    position: absolute;
+    top: 140px;
+    left: 0;
 }
 
-
-#btnSetLatLong{
-	top:-14px;position:relative;
+#btnSetLatLong {
+    top: -14px;
+    position: relative;
 }
 
 #site-title {
-	border-bottom: 1px solid #ddd;
-	margin-bottom: 5px;
-	line-height: 40px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 5px;
+    line-height: 40px;
 }
 
 #content {
-	padding: 20px;
+    padding: 20px;
 }
 
-#content h2{
-	margin-bottom: 10px;
+#content h2 {
+    margin-bottom: 10px;
 }
 
 .ui-pnotify.stack-bar-top {
-	right: 0;
-	top: 0;
+    right: 0;
+    top: 0;
 }
 
 .commTextField {
-	width: 350px;
+    width: 350px;
 }

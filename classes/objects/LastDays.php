@@ -1,5 +1,8 @@
 <?php
-class LastDays {
+
+class LastDays
+{
     public $points;
 }
+
 ?>

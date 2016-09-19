@@ -18,7 +18,8 @@
  * @access    public
  * @since     File available since Release 0.0.0
  */
-class PlantInfoResult extends BaseResult {
+class PlantInfoResult extends BaseResult
+{
 
     // values
     public $valueSYSID;
@@ -30,7 +31,7 @@ class PlantInfoResult extends BaseResult {
     public $valueUpdtd;
     public $valueEvents;
     public $valueInverter;
-    
+
     //language
     public $langEVENTS;
     public $langINVERTERINFO;
@@ -52,4 +53,5 @@ class PlantInfoResult extends BaseResult {
     }
 
 }
+
 ?>

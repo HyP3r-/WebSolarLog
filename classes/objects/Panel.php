@@ -1,4 +1,5 @@
 <?php
+
 class Panel
 {
     public $id;
@@ -18,10 +19,10 @@ class Panel
         $this->id = -1;
         $this->inverterId = 0;
         $this->deviceId = 0;
-        $this->description='';
-        $this->roofOrientation='';
-        $this->roofPitch='';
-        $this->amount=0;
-        $this->wp=0;
+        $this->description = '';
+        $this->roofOrientation = '';
+        $this->roofPitch = '';
+        $this->amount = 0;
+        $this->wp = 0;
     }
 }

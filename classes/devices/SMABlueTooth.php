@@ -1,5 +1,7 @@
 <?php
-Class SMABlueTooth implements DeviceApi {
+
+Class SMABlueTooth implements DeviceApi
+{
     private $ADR;
     private $DEBUG;
     private $PATH;
@@ -7,36 +9,41 @@ Class SMABlueTooth implements DeviceApi {
     private $device;
     private $communication;
     private $useCommunication = false;
-    
-    function __construct($path, $address, $debug) {
+
+    function __construct($path, $address, $debug)
+    {
         $this->ADR = $address;
         $this->DEBUG = $debug;
         $this->PATH = $path;
     }
-    
-    function setCommunication(Communication $communication, Device $device) {
-    	$this->communication = $communication;
-    	$this->device = $device;
-    	$this->useCommunication = true;
+
+    function setCommunication(Communication $communication, Device $device)
+    {
+        $this->communication = $communication;
+        $this->device = $device;
+        $this->useCommunication = true;
     }
-    
+
     /**
      * @see DeviceApi::getState()
      */
-    public function getState() {
-    	return 0; // Try to detect, as it will die when offline
+    public function getState()
+    {
+        return 0; // Try to detect, as it will die when offline
     }
-    
-    public function getAlarms() {
-    	if ($this->DEBUG) {
-    		return "W2223424".rand(0,9);
-    	} else {
-    		return $this->execute('');
-    	}
+
+    public function getAlarms()
+    {
+        if ($this->DEBUG) {
+            return "W2223424" . rand(0, 9);
+        } else {
+            return $this->execute('');
+        }
 
     }
 
-    public function getData() {
+    public function getData()
+    {
         if ($this->DEBUG) {
             //return $this->execute('-b -c -T ' . $this->COMOPTION . ' -d0 -e 2>'. Util::getErrorFile($this->INVTNUM));
             return "SMAspot V2.0.4
@@ -91,67 +98,74 @@ ExportDayDataToCSV()
 startTime = 51308A30 -> 01/03/2013 12:00:00
 ExportMonthDataToCSV()
 Done.";
-            
+
         } else {
-			 /*
-			 SMAspot [-scan] [-d#] [-v#] [-ad#] [-am#] [-cfgX.Y] [-u]
-			 -scan   Scan for bluetooth enabled SMA inverters.
-			 -d#     Set debug level: 0-5 (0=none, default=2)
-			 -v#     Set verbose output level: 0-5 (0=none, default=2)
-			 -ad#    Set #days for archived daydata: 0-90
-			         0=disabled, 1=today (default), ...
-			 -am#    Set #months for archived monthdata: 0-60
-			         0=disabled, 1=current month (default), ...
-			 -cfgX.Y Set alternative config file to X.Y (multiple inverters)
-			 -u      Upload to online monitoring system (see config file)
-			 -finq   Force Inquiry (Inquire inverter also during the night) 
-			  */
-			  return trim($this->execute('-v -finq'));
+            /*
+            SMAspot [-scan] [-d#] [-v#] [-ad#] [-am#] [-cfgX.Y] [-u]
+            -scan   Scan for bluetooth enabled SMA inverters.
+            -d#     Set debug level: 0-5 (0=none, default=2)
+            -v#     Set verbose output level: 0-5 (0=none, default=2)
+            -ad#    Set #days for archived daydata: 0-90
+                    0=disabled, 1=today (default), ...
+            -am#    Set #months for archived monthdata: 0-60
+                    0=disabled, 1=current month (default), ...
+            -cfgX.Y Set alternative config file to X.Y (multiple inverters)
+            -u      Upload to online monitoring system (see config file)
+            -finq   Force Inquiry (Inquire inverter also during the night)
+             */
+            return trim($this->execute('-v -finq'));
         }
     }
-    
-    public function getLiveData() {
-    	$data = $this->getData();
-    	return SMABlueToothConverter::toLive($data);
+
+    public function getLiveData()
+    {
+        $data = $this->getData();
+        return SMABlueToothConverter::toLive($data);
     }
 
-    public function getInfo() {
+    public function getInfo()
+    {
         if ($this->DEBUG) {
             return "SMA XXXXXX.XXXXXXXX";
         } else {
-           return $this->execute('-i');
+            return $this->execute('-i');
         }
     }
 
-    public function getHistoryData() {
+    public function getHistoryData()
+    {
         //return $this->execute('-k');
         // not supported
     }
 
-    public function syncTime() {
+    public function syncTime()
+    {
         //return $this->execute('-L');
         // not supported
     }
-    
-    public function doCommunicationTest() {
-    	$result = false;
-    	$data = $this->execute('-i');
-    	if ($data) {
-    		$result = true;
-    	}
-    	return array("result"=>$result, "testData"=>$data);
+
+    public function doCommunicationTest()
+    {
+        $result = false;
+        $data = $this->execute('-i');
+        if ($data) {
+            $result = true;
+        }
+        return array("result" => $result, "testData" => $data);
     }
 
-    private function execute($options) {
-    	$cmd = "";
-    	if ($this->useCommunication === true) {
-    		$cmd = $this->communication->uri . ' ' . $options;
-    	} else {
-    		$cmd = $this->PATH . ' ' . $options;
-    	}
-    	
+    private function execute($options)
+    {
+        $cmd = "";
+        if ($this->useCommunication === true) {
+            $cmd = $this->communication->uri . ' ' . $options;
+        } else {
+            $cmd = $this->PATH . ' ' . $options;
+        }
+
         return shell_exec($cmd);
     }
 
 }
+
 ?>

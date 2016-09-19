@@ -1,4 +1,5 @@
 <?php
+
 class DeltaSoliviaConverter
 {
 
@@ -10,12 +11,12 @@ class DeltaSoliviaConverter
     public static function toLive($inputLine)
     {
         // Check if the input line is valid
-        if ($inputLine == null || trim($inputLine) == "" || trim($inputLine) == "No response from inverter - shutdown?"  ) {
-        	return null;
+        if ($inputLine == null || trim($inputLine) == "" || trim($inputLine) == "No response from inverter - shutdown?") {
+            return null;
         }
         // Split on a serie of spaces (not one)
-        $data = preg_split("/[[:space:]]+/",$inputLine);
-        
+        $data = preg_split("/[[:space:]]+/", $inputLine);
+
         // data[0] = date-time format YYYYMMDD-HH:MM:SS 
         // data[1] = DC Volts 1 
         // data[2] = DC Current 1
@@ -35,17 +36,17 @@ class DeltaSoliviaConverter
 
         // Check if the record is okay
         if (!empty($data[14]) && trim($data[15]) != "OK") {
-			throw new ConverterException("not a OK response from DeltaSolivia:\r\n".print_r($inputLine,true));
+            throw new ConverterException("not a OK response from DeltaSolivia:\r\n" . print_r($inputLine, true));
         }
 
         $live = new Live();
         $live->type = 'production';
         // data[0] = date time YYYYMMDD-HH:MM:SS
-        if (!empty ($data[0])) { 
+        if (!empty ($data[0])) {
             $live->SDTE = $data[0];
-            $live->time = strtotime(substr($data[0], 0, 4)."-".substr($data[0], 4, 2)."-".substr($data[0], 6, 2)." ".substr($data[0], 9, 2).":".substr($data[0], 12, 2).":".substr($data[0], 15, 2));
-             //print "live->SDTE=".$live->SDTE;
-             //print "live->time=".$live->time;
+            $live->time = strtotime(substr($data[0], 0, 4) . "-" . substr($data[0], 4, 2) . "-" . substr($data[0], 6, 2) . " " . substr($data[0], 9, 2) . ":" . substr($data[0], 12, 2) . ":" . substr($data[0], 15, 2));
+            //print "live->SDTE=".$live->SDTE;
+            //print "live->time=".$live->time;
         }
         // data[1] = DC Volts 1
         if (!empty ($data[1])) {
@@ -117,16 +118,17 @@ class DeltaSoliviaConverter
             $live->KWHT = $data[14];
             //print "live->KWHT=".$live->KWHT;
         }
-        
+
         // This line is only valid if GP and KWHT are filled with data
         if (empty($live->KWHT) || empty($live->GP)) {
-                return null;
+            return null;
         }
 
         return $live;
     }
-    
-    public static function toDeviceHistory($line) {
+
+    public static function toDeviceHistory($line)
+    {
         // Delta Solivia inverter do not support this
         // in the future  may be able to import
         // Now kWh
@@ -135,6 +137,6 @@ class DeltaSoliviaConverter
         // Month kWh
         // Year kWh
         // Total kWh
-    	return null;
+        return null;
     }
 }

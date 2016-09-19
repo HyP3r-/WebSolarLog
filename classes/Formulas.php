@@ -30,7 +30,8 @@ class Formulas
      * @param $gridPower
      * @param $COEF
      */
-    public static function calcPowerEfficency($gridPower, $COEF, $decimals = 2) {
+    public static function calcPowerEfficency($gridPower, $COEF, $decimals = 2)
+    {
         $COEF = ($COEF > 1) ? 1 : $COEF; // Only allow efficency of max 100%
         return round($gridPower * $COEF, $decimals);
     }
@@ -41,10 +42,11 @@ class Formulas
      * @param $kiloWattHourStop
      * @param $COEF
      */
-    public static function calcKiloWattHourDay($kiloWattHourStart, $kiloWattHourStop, $COEF, $decimals = 0) {
-        return round( (($kiloWattHourStop - $kiloWattHourStart) * 1000 * $COEF) / 1000, $decimals);
+    public static function calcKiloWattHourDay($kiloWattHourStart, $kiloWattHourStop, $COEF, $decimals = 0)
+    {
+        return round((($kiloWattHourStop - $kiloWattHourStart) * 1000 * $COEF) / 1000, $decimals);
     }
-    
+
     /**
      * Calculates the average power over a given time
      * @param $kiloWattHourStart
@@ -52,11 +54,12 @@ class Formulas
      * @param $timeDifference
      * @param $decimals
      */
-    public static function calcAveragePower($kiloWattHourStart, $kiloWattHourStop, $timeDifference, $decimals = 1) {
-    	if ($timeDifference == 0) return 0; // Prevent division by zero
-    	return round((((($kiloWattHourStart-$kiloWattHourStop) * 3600) / $timeDifference) * 1000), $decimals);
+    public static function calcAveragePower($kiloWattHourStart, $kiloWattHourStop, $timeDifference, $decimals = 1)
+    {
+        if ($timeDifference == 0) return 0; // Prevent division by zero
+        return round((((($kiloWattHourStart - $kiloWattHourStop) * 3600) / $timeDifference) * 1000), $decimals);
     }
-    
+
 
     /**
      * Calculates the amount of co2 for the specified kwh
@@ -65,8 +68,9 @@ class Formulas
      * @param $decimals
      * @return string
      */
-    public static function CO2kWh($kiloWattHour, $configCO2KWH, $decimals = 1) {
-    	return self::calculateCO2($kiloWattHour, $configCO2KWH, $decimals);
+    public static function CO2kWh($kiloWattHour, $configCO2KWH, $decimals = 1)
+    {
+        return self::calculateCO2($kiloWattHour, $configCO2KWH, $decimals);
     }
 
     /**
@@ -76,8 +80,9 @@ class Formulas
      * @param $decimals
      * @return string
      */
-    public static function CO2gas($litreGas, $configCO2gas, $decimals = 1) {
-    	return self::calculateCO2($litreGas, $configCO2gas, $decimals);
+    public static function CO2gas($litreGas, $configCO2gas, $decimals = 1)
+    {
+        return self::calculateCO2($litreGas, $configCO2gas, $decimals);
     }
 
     /**
@@ -87,17 +92,18 @@ class Formulas
      * @param $decimals
      * @return string
      */
-    private static function calculateCO2($amount, $ratio, $decimals = 1) {
-    	$CO2=(($amount/1000)*$ratio);
-    	if ($CO2>1000) {
-    		$CO2 = number_format(($CO2/1000), 3, ",", "")." Tonnes";
-    	}else {
-    		$CO2 = number_format(($CO2),1, ",", "")." Kg";
-    	}
-    	
-    	return $CO2;
+    private static function calculateCO2($amount, $ratio, $decimals = 1)
+    {
+        $CO2 = (($amount / 1000) * $ratio);
+        if ($CO2 > 1000) {
+            $CO2 = number_format(($CO2 / 1000), 3, ",", "") . " Tonnes";
+        } else {
+            $CO2 = number_format(($CO2), 1, ",", "") . " Kg";
+        }
+
+        return $CO2;
     }
-    
+
 }
 
 ?>
