@@ -193,8 +193,11 @@ password: `admin`
 
 ## Links
 
-For more information, visit the WebSolarLog wike
+For more information, visit the WebSolarLog page
+
 http://www.websolarlog.com
+
 http://sourceforge.net/p/websolarlog/wiki/Home/
+
 https://github.com/HyP3r-/WebSolarLog
 
