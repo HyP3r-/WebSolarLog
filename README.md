@@ -35,7 +35,7 @@ Configure the nginx site. For example the default profile:
  
 Add the include of the php.conf file:
 
-    server{
+    server {
         listen 80; ## listen for ipv4; this line is default and implied
         #listen [::]:80 default_server ipv6only=on; ## listen for ipv6
         
@@ -52,7 +52,7 @@ Add the include of the php.conf file:
             #Uncomment to enable naxsi on this location
             #include /etc/nginx/naxsi.rules
         }
-        location /doc/{
+        location /doc/ {
             alias /usr/share/doc/;
             autoindex on;
             allow 127.0.0.1;
@@ -63,7 +63,7 @@ Add the include of the php.conf file:
         include php.conf;
     }
 
-Create or edit the php.conf file: 
+Create or edit the `php.conf` file inside the same directory: 
 
     fastcgi_intercept_errors on;
     # this will allow Nginx to intercept 4xx/5xx error codes
@@ -112,9 +112,9 @@ After the configuration of nginx you can download this project and
 install it:
 
     $ cd /usr/share/nginx/www
+    $ git clone https://github.com/HyP3r-/WebSolarLog.git
     $ mv WebSolarLog websolarlog
     $ chown -R www-data:www-data websolarlog
-    $ git clone https://github.com/HyP3r-/WebSolarLog.git
     
 ### Configure Service 
 
@@ -161,7 +161,7 @@ After that run the update script and start the service:
     update-rc.d websolarlog defaults
     service websolarlog start
 
-And for a systemd environment create a init.d script:
+And for a systemd environment create a websolarlog.service:
 
     [Unit]
     Description=websolarlog
@@ -175,6 +175,11 @@ And for a systemd environment create a init.d script:
     [Install]
     WantedBy=multi-user.target
     
+After that you can start the service:
+
+    systemctl enable websolarlog.service
+    systemctl start websolarlog
+
 ### Visit the Admin Webpage
 
 Go to the Admin to configure WebSolarLog:
@@ -191,3 +196,5 @@ password: `admin`
 For more information, visit the WebSolarLog wike
 http://www.websolarlog.com
 http://sourceforge.net/p/websolarlog/wiki/Home/
+https://github.com/HyP3r-/WebSolarLog
+
