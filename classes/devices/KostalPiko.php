@@ -65,7 +65,7 @@ AC3,243.5,6.27,1537,60.07,8560
 PRT,PIKO-Portal,01h48m49s
 HST,00h07m36s,00h15m00s";
         } else {
-            return trim($this->execute(' -csv -q'));
+            return trim($this->execute(" -csv -q"));
         }
     }
 
@@ -82,41 +82,21 @@ HST,00h07m36s,00h15m00s";
         if ($this->DEBUG) {
             return "PIKO 8.3 90342JCO0001K";
         } else {
-            $output = $this->execute(' -m -r -q');
-            $lines = explode('\n', $output);
-            return $lines[2] . ' ' . $lines[0] . ' ' . $lines[3];
+            $output = $this->execute(" -m -r -q");
+            $lines = explode("\n", $output);
+            return $lines[2] . " " . $lines[0] . " " . $lines[3];
         }
     }
 
     public function getHistoryData()
     {
-        // Try to retrieve the data of the last 366 days
-        // TODO incorrect command
-        $result = $this->execute('-k366 -Y60'); // -K10 is not yet supported by aurora
-
-        if ($result) {
-            HookHandler::getInstance()->fire("onDebug", "getHistoryData :: start processing the result");
-            $deviceHistoryList = array();
-            $lines = explode("\n", $result);
-            foreach ($lines as $line) {
-                $deviceHistory = AuroraConverter::toDeviceHistory($line);
-                if ($deviceHistory != null) {
-                    $deviceHistory->amount = $deviceHistory->amount * 10; // Remove this line when -K10 is supported
-                    $deviceHistoryList[] = $deviceHistory;
-                }
-            }
-            return $deviceHistoryList;
-        } else {
-            if (Session::getConfig()->debugmode) {
-                HookHandler::getInstance()->fire("onDebug", "getHistoryData :: nothing returned by inverter result=" + $result);
-            }
-        }
-
+        // not supported
         return null;
     }
 
     public function syncTime()
     {
+        // not supported
         return null;
     }
 
@@ -124,7 +104,7 @@ HST,00h07m36s,00h15m00s";
     public function doCommunicationTest()
     {
         $result = false;
-        $data = $this->execute(' -csv -q');
+        $data = $this->execute(" -csv -q");
         if ($data) {
             $result = true;
         }
@@ -137,9 +117,9 @@ HST,00h07m36s,00h15m00s";
     {
         $cmd = "";
         if ($this->useCommunication === true) {
-            $cmd = $this->communication->uri . ' ' . $this->communication->optional . ' ' . $options . ' ';
+            $cmd = $this->communication->uri . " " . $this->communication->optional . " " . $options . " ";
         } else {
-            $cmd = $this->PATH . ' ' . $options;
+            $cmd = $this->PATH . " " . $options;
         }
 
         $exec = shell_exec($cmd);
