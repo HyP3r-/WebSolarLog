@@ -68,13 +68,10 @@ function setGraphTitle(graphTitle, element) {
 $(window).blur(function () {
     // set time on blur
     window.blurTime = (new Date()).getTime();
-    if ($('#stayLiveOnBlur').is(':checked')) {
-        windowState = true;
-    } else {
-        windowState = false;
-    }
+    windowState = !!$('#stayLiveOnBlur').is(':checked');
 
 });
+
 $(window).focus(function () {
     // set current time
     currentTime = (new Date()).getTime();
@@ -87,9 +84,11 @@ $(window).focus(function () {
     }
     windowState = true;
 });
+
 function getWindowsState() {
     return windowState;
 }
+
 function ajaxAbort(xhr) {
     // set current time
     currentTime = (new Date()).getTime();
@@ -134,15 +133,16 @@ function generatePanelClearSky(result, roofOrientation, roofPitch, panelPower, d
     for (var i = sunriseRounded; i <= sunsetRounded; i = i + coeff) {
         maxPowerTime = [];
         currentTime = new Date(i);
+        var minutes, hours;
         if (currentTime.getMinutes() < 10) {
-            var minutes = 0 + "" + currentTime.getMinutes();
+            minutes = 0 + "" + currentTime.getMinutes();
         } else {
-            var minutes = currentTime.getMinutes();
+            minutes = currentTime.getMinutes();
         }
         if (currentTime.getHours() < 10) {
-            var hours = 0 + "" + currentTime.getHours();
+            hours = 0 + "" + currentTime.getHours();
         } else {
-            var hours = currentTime.getHours();
+            hours = currentTime.getHours();
         }
         var coor = azimuthhight(timeStringToFloat(hours + ':' + minutes));
         maxPowerTime.push(i, Math.round(coor.tot_en / 1000 * Wp_panels));
@@ -153,12 +153,12 @@ function generatePanelClearSky(result, roofOrientation, roofPitch, panelPower, d
     totalKWhkWp = Math.round((totalPower / Wp_panels) * 100) / 100;
     totalPower = Math.round((totalPower / 1000) * 100) / 100;
 
-    var result = [];
-    result.push(maxPowerTime);
-    result.push(maxPower);
-    result.push(totalKWhkWp);
-    result.push(totalPower);
-    return result;
+    var return_result = [];
+    return_result.push(maxPowerTime);
+    return_result.push(maxPower);
+    return_result.push(totalKWhkWp);
+    return_result.push(totalPower);
+    return return_result;
 }
 
 function analyticsJSCodeBlock() {
@@ -236,9 +236,9 @@ jQuery.fn.center = function (left, top, position) {
     this.css({'position': position, 'top': top, 'left': left});
 
     return this;
-}
+};
 
-function modLegenda(plot) {
+function modLegenda() {
     // bind to the data highlighting event to make custom tooltip:
     $('#detailsGraph').bind('jqplotDataMouseOver', function (ev, seriesIndex, pointIndex, data) {
         var i = 0;
@@ -395,8 +395,7 @@ function tooltipCompareEditor(str, seriesIndex, pointIndex, plot, series) {
 }
 
 function tooltipDetailsContentEditor(str, seriesIndex, pointIndex, plot, series) {
-    var returned = "";
-    return returned;
+    return "";
 }
 
 function tooltipTodayContentEditorLine(label, value, sign, isBold) {
