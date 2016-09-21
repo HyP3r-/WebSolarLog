@@ -554,7 +554,7 @@ try {
             $lang['someFigures'] = _("Some Figures*");
             $lang['by'] = _("By");
             $lang['status'] = _("status");
-            $lang['IT'] = _("IT");
+            $lang['dc_power'] = _("DC Power");
             $lang['total'] = _("Total");
             $lang['AvgDay'] = _("Avg. Day");
             $lang['today'] = _("Today");
@@ -563,7 +563,7 @@ try {
             $lang['year'] = _("Year");
             $lang['overall'] = _("overall");
             $lang['inv'] = _("Inv.");
-            $lang['grid'] = _("grid");
+            $lang['ac_power'] = _("AC Power");
             $lang['time'] = _("Time");
             $lang['inverter'] = _("Inverter");
             $lang['power'] = _("Power");

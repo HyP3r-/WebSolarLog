@@ -16,10 +16,10 @@
         <div class="column span-1 first">&nbsp;</div>
         <div class="column span-6 first">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{lang.inv}}</div>
         <div class="column span-3 first">{{lang.time}}</div>
-        <div class="column span-3 first">{{lang.grid}}</div>
+        <div class="column span-3 first">{{lang.ac_power}}</div>
         <div class="column span-4 first">I1 ({{lang.ratio}})</div>
         <div class="column span-4 first">I2 ({{lang.ratio}})</div>
-        <div class="column span-3 first">{{lang.IT}}</div>
+        <div class="column span-3 first">{{lang.dc_power}}</div>
         <div id="indexLiveInverters"></div>
         <br><br>
     </div>
