@@ -26,6 +26,10 @@ manager:
     sudo apt-get install php5-common php5-cli php5-fpm nginx php5-cgi \
                          php5-svn php5-sqlite php5-mcrypt libjs-jquery \
                          php5-curl
+                         
+If you don't have git installed install it:
+
+    sudo apt-get install git
 
 ### Configure nginx
 
@@ -33,7 +37,8 @@ Configure the nginx site. For example the default profile:
 
     /etc/nginx/sites-available/default
  
-Add the include of the php.conf file:
+Add the include of the php.conf file, activate the listen statement, add
+index.php to the index files and comment the `try_files` line:
 
     server {
         listen 80; ## listen for ipv4; this line is default and implied
@@ -63,7 +68,8 @@ Add the include of the php.conf file:
         include php.conf;
     }
 
-Create or edit the `php.conf` file inside the same directory: 
+Create or edit the `php.conf` file inside the
+`/etc/nginx/sites-available` directory: 
 
     fastcgi_intercept_errors on;
     # this will allow Nginx to intercept 4xx/5xx error codes
@@ -164,13 +170,14 @@ After that run the update script and start the service:
 And for a systemd environment create a websolarlog.service:
 
     [Unit]
-    Description=websolarlog
+    Description=WebSolarLog
+    After=ngnix.service
     
     [Service]
-    Type=oneshot
-    RemainAfterExit=yes
-    ExecStart=/usr/share/nginx/www/websolarlog/scripts/wsl.sh start
-    ExecStop=/usr/share/nginx/www/websolarlog/scripts/wsl.sh stop
+    ExecStart=/usr/bin/php /usr/share/nginx/www/websolarlog/scripts/server.php
+    Restart=always
+    User=www-data
+    Group=www-data
     
     [Install]
     WantedBy=multi-user.target
